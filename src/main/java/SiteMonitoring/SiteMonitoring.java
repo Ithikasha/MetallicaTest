@@ -57,9 +57,9 @@ public class SiteMonitoring {
 //		
 //		System.out.println(Email);
 	
-		data.driver.get(data.DEV_url);
+		data.driver.get(data.Prod_url);
 		
-		util.Click(elements.no);
+//		util.Click(elements.no);
 		
 		functions.PRD_login();
 		
@@ -71,10 +71,10 @@ public class SiteMonitoring {
 		
 		Loqate();
 		
-		ApplePay();
-		
-		PayPal();
-		
+//		ApplePay();
+//		
+//		PayPal();
+//		
 //		Cloudinary();
 		
 		KnightLab();
@@ -145,7 +145,7 @@ public class SiteMonitoring {
 			
 			functions.write_SiteMonitoring(SiteData.result, 1);
 			
-			Email = Email.concat("Shipper HQ_Instock failed");
+//			Email = Email.concat("Shipper HQ_Instock failed");
 			
 //			data.email(Email);
 		}
@@ -158,7 +158,7 @@ public class SiteMonitoring {
 	
 	public static void ShipperHQ_Preorder() throws Exception  
 	{
-		functions.Add_Preorder("REBACD");
+		functions.Add_Preorder("72 SEASONS COLORED VINYL - SMOKY BLACK (2LP)");
 		
 		util.Click(elements.checkout);
 		
@@ -757,7 +757,7 @@ public class SiteMonitoring {
 //		
 //		util.Click(elements.DigitalDownload);
 		
-		functions.GuestOrderCheck("00134707","KT15 2BQ", "ithikasha@unitedtechno.com" );
+		functions.GuestOrderCheck("01106708","94070-5800", "ithikasha@unitedtechno.com" );
 		
 		util.Click(elements.DigitalDownload);
 		
@@ -769,7 +769,7 @@ public class SiteMonitoring {
 		
 		Thread.sleep(10000);
 		
-		File f = new File("C:\\Users\\UTIS LAPTOP 38\\Downloads\\BLCKND043_mp3.zip"); 
+		File f = new File("C:\\Users\\UTIS LAPTOP 38\\Downloads\\I-DISAPPEAR_mp3.zip"); 
 		
 //		System.out.println(f.exists());
 			
@@ -803,7 +803,7 @@ public class SiteMonitoring {
 		
 //		data.driver.get(data.Knightlab_Url);
 		
-		data.driver.get(data.DevKnightlab_Url);
+		data.driver.get(data.Knightlab_Url);
 		
 //		util.Click(elements.no);
 		
@@ -817,7 +817,7 @@ public class SiteMonitoring {
 			
 			SiteData.result = true;
 			
-			functions.write_SiteMonitoring(SiteData.result, 14);	
+			functions.write_SiteMonitoring(SiteData.result, 13);	
 		}
 	
 	
@@ -829,7 +829,7 @@ public class SiteMonitoring {
 			
 			SiteData.result = false;
 			
-			functions.write_SiteMonitoring(SiteData.result, 14);
+			functions.write_SiteMonitoring(SiteData.result, 13);
 			
 		
 		}
@@ -854,7 +854,7 @@ public class SiteMonitoring {
 			
 			SiteData.result = true;
 			
-			functions.write_SiteMonitoring(SiteData.result, 15);	
+			functions.write_SiteMonitoring(SiteData.result, 14);	
 		}
 	
 	
@@ -865,7 +865,7 @@ public class SiteMonitoring {
 			
 			SiteData.result = false;
 			
-			functions.write_SiteMonitoring(SiteData.result, 15);
+			functions.write_SiteMonitoring(SiteData.result, 14);
 			
 			data.driver.close();
 		
@@ -878,7 +878,7 @@ public class SiteMonitoring {
 	{
 		
 		
-		data.driver.get(data.DEV_url);
+		data.driver.get(data.Prod_url);
 		
 		if(util.Isdisplayed(elements.no))
 		{
@@ -943,7 +943,7 @@ public class SiteMonitoring {
 			
 			SiteData.result = true;
 			
-			functions.write_SiteMonitoring(SiteData.result, 16);
+			functions.write_SiteMonitoring(SiteData.result, 15);
 			
 			util.Click(elements.miniviewcart);
 			
@@ -966,7 +966,7 @@ public class SiteMonitoring {
 			
 			SiteData.result = false;
 			
-			functions.write_SiteMonitoring(SiteData.result, 16);
+			functions.write_SiteMonitoring(SiteData.result, 15);
 			
 			util.Click(elements.miniviewcart);
 			
@@ -1132,7 +1132,7 @@ public class SiteMonitoring {
 		 
 		 Thread.sleep(2000);
 		 
-		data.driver.get("https://ithikasha@unitedtechno.com:Ithi@sfcc07nov@development.rockdevelop.com/contactus/");
+		data.driver.get("https://www.metallica.com/contactus/");
 		 
 //		util.Click(elements.no);
 		

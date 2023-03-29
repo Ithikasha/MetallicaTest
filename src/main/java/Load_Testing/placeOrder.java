@@ -43,7 +43,7 @@ public class placeOrder {
 //				util.Click(data.STG_proceed);
 //				}
 //			
-			util.Click(elements.no);
+//			util.Click(elements.no);
 			
 //			functions.InventoryCheck();
 			

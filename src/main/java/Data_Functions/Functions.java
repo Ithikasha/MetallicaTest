@@ -487,7 +487,7 @@ public void orderConfirmation(String filePath, String fileName, String sheetName
 
 	data_obj.orderNumber = element_obj.orderNumber.getText().toString();
 
-	System.out.println(data_obj.orderNumber.substring(15));
+	System.out.println(data_obj.orderNumber.substring(8));
 	
 	data_obj.subTotal = element_obj.Subtotal.getText().toString();
 
@@ -687,7 +687,7 @@ public boolean selectItems() throws InterruptedException, Exception
 		
 		util.Sendkeys(element_obj.email, data_obj.username);
 	
-		util.Sendkeys(element_obj.password, data_obj.DEV_password);
+		util.Sendkeys(element_obj.password, data_obj.PRD_password);
 	
 		util.Click(element_obj.login_button);
 		

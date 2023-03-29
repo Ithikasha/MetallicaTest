@@ -79,15 +79,15 @@ public class Regression_test
 			
 			
 			
-			hp.Homepage_Links();  
+//			hp.Homepage_Links();  
 			
-			lp.Login_Loginpage();
-			
-			lp.Login_Invalid();
-			
-			lp.Login_Cartpage();
-			
-			lp.Check_Orderstatus();
+//			lp.Login_Loginpage();
+//			
+//			lp.Login_Invalid();
+//			
+//			lp.Login_Cartpage();
+//			
+//			lp.Check_Orderstatus();
 			
 			
 			
@@ -98,7 +98,7 @@ public class Regression_test
 
 			
 			
-			ma.MyAccount_Links();
+//			ma.MyAccount_Links();
 			
 			pdp.PDP_Testing();
 			

@@ -32,12 +32,12 @@ public class Login_smoke {
 
 		System.out.println("\t\tTestcase - 9");
 		
-//	      data_obj.driver.get(data_regression.URL);
-//		
-//		  if(util.Isdisplayed(element_obj.no))
-//		  {
-//			util.Click(element_obj.no);
-//		  }
+	      data_obj.driver.get(data_regression.URL);
+		
+		  if(util.Isdisplayed(element_obj.no))
+		  {
+			util.Click(element_obj.no);
+		  }
 		
 		func.smoke_login(data_regression.email, data_regression.password);
 		
@@ -75,7 +75,7 @@ public class Login_smoke {
 		
 	    int fail = 0;
 		
-		func.smoke_login("ithikash@unitedtechno.com","Ithi@met0" );
+		func.smoke_login("ithikas@unitedtechno.com","Ithi@met07" );
 		
 		if(util.Isdisplayed(data_obj.driver.findElement(By.xpath("//div[@class='error-form']"))))
 		{
@@ -90,7 +90,7 @@ public class Login_smoke {
 			fail++;
 		}
 		
-		func.smoke_login("ithikasha@unitedtechno.com","ithi@met07" );
+		func.smoke_login("ithikasha@unitedtechno.com","ithi@met0" );
 		
 		if(util.Isdisplayed(data_obj.driver.findElement(By.xpath("//div[@class='error-form']"))))
 		{
@@ -105,7 +105,7 @@ public class Login_smoke {
 			fail++;
 		}
 		
-		func.smoke_login("ithikash@unitedtechno.com","ithi@met07" );
+		func.smoke_login("ithikas@unitedtechno.com","ithi@met0" );
 		
 		if(util.Isdisplayed(data_obj.driver.findElement(By.xpath("//div[@class='error-form']"))))
 		{

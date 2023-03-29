@@ -709,6 +709,9 @@ public class pageElements {
 	
 	@FindBy(xpath="(//td[@class='ng-binding'])[1]")
 	public WebElement TOMS_OrderDate;
+	
+	@FindBy(xpath="//span[@id='recaptcha-anchor']")
+	public WebElement reCAPTCHA;
 
 	
 //Contact Us form

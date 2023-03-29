@@ -25,6 +25,17 @@
     <scope>test</scope>
 </dependency>
 
+<suite name="automateCaptchaInSeleniumSuite">
+   <test name="automateCaptchaInSeleniumTest">
+       <classes>
+           <class name="com.infa.dqcloud.testcases.profiling.automateCaptchaInSelenium">
+ 
+           </class>
+       </classes>
+   </test>
+</suite>
+
+
 <dependency>
     <groupId>org.apache.maven.plugins</groupId>
     <artifactId>maven-compiler-plugin</artifactId>

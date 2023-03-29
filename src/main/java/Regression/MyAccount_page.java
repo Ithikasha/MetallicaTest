@@ -105,7 +105,7 @@ public class MyAccount_page {
 		
 		util.Click(element_obj.MyAccount_Presale); // Presale
 		
-		if(util.Isdisplayed(element_obj.driver.findElement(By.xpath("(//h1[@class='presale-header'])"))))
+		if(util.Isdisplayed(element_obj.driver.findElement(By.xpath("//h1[@class='presale-header']"))))
 		{
 			System.out.println("\t\t\t"+"Presale link verification Successful");
 		

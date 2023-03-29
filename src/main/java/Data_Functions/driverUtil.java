@@ -115,7 +115,9 @@ public class driverUtil {
 	public WebDriver chrome()
 	{
 //		System.setProperty("webdriver.chrome.driver","C:\\Users\\UNITS\\Documents\\BitBucket\\chromedriver_win32\\chromedriver.exe");
-		System.setProperty("webdriver.chrome.driver","C:\\Users\\UTIS LAPTOP 38\\Downloads\\chromedriver_win32 (10)\\chromedriver.exe");
+		System.setProperty("webdriver.chrome.driver","C:\\Users\\UTIS LAPTOP 38\\Downloads\\chromedriver_win32 (12)\\chromedriver.exe");
+//		System.setProperty("webdriver.chrome.driver","C:\\METALLICA\\Chromedriver\\chromedriver.exe");
+		
 //		System.setProperty("webdriver.chrome.driver","Chromedriver\\chromedriver.exe");
 		WebDriver driver = new ChromeDriver();
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);

@@ -220,7 +220,7 @@ public class PDP {
 		
 		util.Click(element_obj.SearchBar);
 		
-		util.Sendkeys(element_obj.srchIP,"REBACD");
+		util.Sendkeys(element_obj.srchIP,"72 SEASONS COLORED VINYL - SMOKY BLACK (2LP)");
 		
 //		LIVE METALLICA: GLOBAL CITIZEN FESTIVAL IN NEW YORK NY - SEPTEMBER 24 2022 (CD)
 
