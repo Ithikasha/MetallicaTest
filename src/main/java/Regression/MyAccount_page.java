@@ -174,7 +174,7 @@ public class MyAccount_page {
 		
 		util.Click(element_obj.MyAccount_Vinylclub); // Vinyl Club
 		
-		if(util.Isdisplayed(element_obj.driver.findElement(By.xpath("//a[contains(text(),'Read more')]"))))
+		if(util.Isdisplayed(element_obj.driver.findElement(By.xpath("//div[@class='vinyl-banner']"))))
 		{
 			System.out.println("\t\t\t"+"Vinyl Club link verification Successful");
 			
@@ -194,8 +194,12 @@ public class MyAccount_page {
 		System.out.println("\tRegression Testing: Order History Link");
 		
 		System.out.println("\t\tTestcase - 20");
+			
+		util.waitForElementToLoad(element_obj.MyAccount_Order);
+			
+		util.jClick(data_obj.driver, element_obj.MyAccount_Order); // Order History
 		
-		util.Click(element_obj.MyAccount_Order); // Order History
+		//util.Click(element_obj.MyAccount_Order); 
 		
 		if(util.Isdisplayed(element_obj.driver.findElement(By.xpath("(//h1[@class='order-history-h1 account-primary-heading'])"))))
 		{

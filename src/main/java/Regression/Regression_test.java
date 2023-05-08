@@ -76,29 +76,19 @@ public class Regression_test
 			
 			Regression_data.readInputs();
 			
+			hp.Homepage_Links();  
 			
+			lp.Login_Loginpage();
 			
+			lp.Login_Invalid();
 			
-//			hp.Homepage_Links();  
+			lp.Login_Cartpage();
 			
-//			lp.Login_Loginpage();
-//			
-//			lp.Login_Invalid();
-//			
-//			lp.Login_Cartpage();
-//			
-//			lp.Check_Orderstatus();
-			
-			
-			
-			
-//			
+			lp.Check_Orderstatus();			
+		
 //			lp.Check_Orderstatus(Regression_data.Orderstatus_Ordernumber,Regression_data.Orderstatus_email,Regression_data.Orderstatus_zipcode);
-
-
 			
-			
-//			ma.MyAccount_Links();
+			ma.MyAccount_Links();
 			
 			pdp.PDP_Testing();
 			
@@ -122,20 +112,14 @@ public class Regression_test
 			
 			sp.Preorder_Validation(); 
 			
-			sp.VC_Validation(); 
+//			sp.VC_Validation(); 
 			
 			bp.ValidateFields();  
 			
 			bp.Invalid_creditcard();
-			
-			
-			
-			
-			
+						
 //          bp.Redeem_GC(smoke_data.GC); 
-			
-			
-			
+						
 			bp.ValidatePayment(); 
 			
 			pop.Validate_orderdetails(); 
@@ -144,34 +128,26 @@ public class Regression_test
 			
 			boolean flag = true; 
 			
-			flag = pop.Validate_editlink();  
+			flag = pop.Validate_editlink(); 
 			
 			if(flag)
 			{
 				oc.Productdetail();					
 			}
 			
-			else
-		    
+			else		    
 			{
 				elements.POviewcart.click();
 			}
 			
-			
 //		    System.out.println("\n\n\n\t\t\t\t\t\t\t\tTest-"+smoke_data.testCount+" Completed!!!");
-			
-			
+						
 			util.Click(elements.ContinueShopping);
 			
 			util.Click(elements.srch);
-			
-			
-			
-			
+						
 //			util.WaitAndClick(elements.MyAccount); 
-			
-			
-			
+						
 			util.WaitAndClick(elements.Logout); 
 			
 			Regression_data.itemlist = null; 
@@ -179,10 +155,7 @@ public class Regression_test
 			Regression_data.qty = null; 
 			
 			Regression_data.variant = null; 
-			
-			
-			
-						           			
+								           			
 //			System.out.println("Domestic Orders");
 			
 //			functions.bulkOrder_testing(smoke_data.filePath, smoke_data.Result_fileName, "Regression_DomesticOrders",smoke_data.DOrders);
@@ -198,11 +171,7 @@ public class Regression_test
 			hp.MiniCartOverlay();
 			
 			ContactUS.ServiceCloud();
-			
-			
-			
-			
-		
+					
 	}
 	
 }

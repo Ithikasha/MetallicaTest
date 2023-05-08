@@ -112,7 +112,7 @@ public class pageElements {
 	@FindBy(xpath="(//a[contains(text(),'Returns')])")
 	public WebElement ReturnLink;
 	
-	@FindBy(xpath="//a[contains(text(),'Credits')]")
+	@FindBy(xpath="//div[@class='footer-bottom']//a[contains(text(),'Credits')]")
 	public WebElement CreditsLink;
 	
 	@FindBy(xpath="//a[contains(text(),'Terms of Use')]")
@@ -271,6 +271,9 @@ public class pageElements {
 	
 	@FindBy(xpath="//li[@class='cart-row']//following-sibling::button[@value='Remove']")
 	public WebElement remove;
+	
+	@FindBy(xpath="//li[@class='cart-row rowgiftcert']//following-sibling::button[@value='Remove']")
+	public WebElement GiftRemove;
 
 	@FindBy(xpath="(//div[@class='c-product-quantity']//child::input[@value='2'])")
 	public WebElement CP_quantity;
@@ -345,7 +348,7 @@ public class pageElements {
 	@FindBy(xpath="//textarea[@id='dwfrm_singleshipping_shippingAddress_giftMessage']")
 	public WebElement giftMsg;
 	
-	@FindBy(xpath="//label[contains(@for,'useAsBillingAddress')]") ////input[contains(@id,'useAsBillingAddress')]
+	@FindBy(xpath="//input[contains(@id,'useAsBillingAddress')]") ////input[contains(@id,'useAsBillingAddress')]
 	public WebElement useAsBillingAddress;
 
 	@FindBy(xpath="//label[@for='shipping-method-shqups4-GND']")
@@ -407,6 +410,7 @@ public class pageElements {
 	
 	@FindBy(xpath="//div[@class='address']")
 	public WebElement Shippingaddress;
+	
 	
 	//Billingpage
 
@@ -553,13 +557,13 @@ public class pageElements {
 	@FindBy(xpath="(//div[@class='row orderdetails-content']//following::span)[1]") ////div[@class='order-information']//following::h3
 	public WebElement GuestCheckorderNumber;
 	
-	@FindBy(xpath="(//h1[@class='order-history-h1 account-primary-heading']//span)[2]")
+	@FindBy(xpath="//div[@class='order-confirmation-details col']//h1[@class='order-history-h1 account-primary-heading']//span")
 	public WebElement orderNumber;
 	
-	@FindBy(xpath="(//dd[@class='order-subtotal-value'])[2]")
+	@FindBy(xpath="//div[@class='order-confirmation-details col']//dd[@class='order-subtotal-value']")
 	public WebElement Subtotal;
 	
-	@FindBy(xpath="(//dd[@class='order-shipping-value'])[2]")
+	@FindBy(xpath="//div[@class='order-confirmation-details col']//dd[@class='order-shipping-value']")
 	public WebElement Shipping_cost;
 	
 	@FindBy(xpath="(//tr[@class='order-shipping  first ']//following::td)[2]")
@@ -569,16 +573,16 @@ public class pageElements {
 	public WebElement Shipping_cost2;
 	
 	@FindBy(xpath="(//dd[@class='order-handling-value'])[2]")
-	public WebElement Handling_cost;
+	public WebElement Handling_cost; 
 	
-	@FindBy(xpath="(//dd[@class='order-value order-total-value'])[2]")
-	public WebElement salesTax;
+	@FindBy(xpath="//div[@class='order-confirmation-details col']//dd[@class='order-sales-tax-value']") 
+	public WebElement salesTax; 
 	
-	@FindBy(xpath="//td[@class='order-value']")
-	public WebElement orderTotal;
+	@FindBy(xpath="//div[@class='order-confirmation-details col']//dd[@class='order-value order-total-value']")
+	public WebElement orderTotal; 
 	
 	@FindBy(xpath="//a[@class='continue button']")
-	public WebElement ContinueShopping;
+	public WebElement ContinueShopping; 
 	
 // Registration page
 	
@@ -647,7 +651,7 @@ public class pageElements {
 	@FindBy(xpath="//a[@class='user-account logged-in header-nav-link']")
 	public WebElement Account_button;
 	
-	@FindBy(xpath="(//a[@title='Order History'])")
+	@FindBy(xpath="(//span[text()='Order Information']//following::a)[1]")
 	public WebElement MyAccount_Order;
 	
 	@FindBy(xpath="(//a[contains(text(),'My Account')])[2]")
@@ -1016,8 +1020,36 @@ public class pageElements {
 	@FindBy(xpath="//button[@name='dwfrm_ordertrack_findorder']")
 	public WebElement GuestSubmit;
 	
-		
 	
+//Gift Certificate
+	
+	@FindBy(xpath="//a[@class='name-link']")
+	public WebElement GiftCertificateProduct;
+	
+	@FindBy(xpath="//input[@id='dwfrm_giftcert_purchase_from']")
+	public WebElement YourNameField;
+	
+	@FindBy(xpath="//input[@id='dwfrm_giftcert_purchase_recipient']")
+	public WebElement FriendNameField;
+	
+	@FindBy(xpath="//input[@id='dwfrm_giftcert_purchase_recipientEmail']")
+	public WebElement FriendEmailField;
+	
+	@FindBy(xpath="//input[@id='dwfrm_giftcert_purchase_confirmRecipientEmail']")
+	public WebElement ConfirmFriendEmail;
+	
+	@FindBy(xpath="//textarea[@id='dwfrm_giftcert_purchase_message']")
+	public WebElement MessageField;
+	
+	@FindBy(xpath="//input[@id='dwfrm_giftcert_purchase_amount']")
+	public WebElement AmountField;
+	
+	@FindBy(xpath="//*[@id='AddToBasketButton']")
+	public WebElement AddToCartCTA;
+	
+	
+	
+		
 	String Address1;
 	
 	String City;

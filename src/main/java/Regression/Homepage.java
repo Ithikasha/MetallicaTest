@@ -266,8 +266,10 @@ public class Homepage {
 				   System.out.println("\t\tTestcase - 6"); 
 				   
 				   System.out.println("\tRegression Testing: Credit Link click");
+				   			   
+				   util.waitForElementToLoad(element_obj.CreditsLink);
 					
-					util.Click(element_obj.CreditsLink);
+				   util.jClick(data_obj.driver,element_obj.CreditsLink);
 					
 					if(util.Isdisplayed(element_obj.driver.findElement(By.xpath("//h3[contains(text(),'METALLICA.COM')]"))))
 					{
@@ -830,12 +832,163 @@ public class Homepage {
 			
 			}
 			
+	public void GiftCertificate_Validation() throws Exception
+	{
+		
+		data_obj.driver.get(data_regression.URL);
+		
+		if(util.Isdisplayed(element_obj.no))
+		{
+			util.Click(element_obj.no);
+		}
+		
+		func.PRD_login();
+		
+		util.Click(element_obj.srch);
+		
+		util.Click(element_obj.SearchBar);
+		
+		util.Sendkeys(element_obj.srchIP,"Gift Certificate");
+
+		element_obj.srchTxt.submit();
+		
+		util.Click(element_obj.GiftCertificateProduct);
+		
+		util.Clear(element_obj.YourNameField);
+		
+		util.Sendkeys(element_obj.YourNameField, "TesterMetallica");
+		
+		util.Sendkeys(element_obj.FriendNameField, "Ithikash");
+		
+		util.Sendkeys(element_obj.FriendEmailField, "ithikasha@unitedtechno.com");
+		
+		util.Sendkeys(element_obj.ConfirmFriendEmail, "ithikasha@unitedtechno.com");
+		
+		util.Sendkeys(element_obj.MessageField, "Test");
+		
+		util.Sendkeys(element_obj.AmountField, "100");
+		
+		util.Click(element_obj.AddToCartCTA);
+		
+		util.Click(element_obj.checkout);
+		
+		try
+		{
+			System.out.println("Entering Try");
+			
+			util.Isdisplayed(element_obj.driver.findElement(By.xpath("//div[@id='billing-address-header']")));
+			
+			util.Clear(element_obj.firstname);
+
+			util.Sendkeys(element_obj.firstname,data_obj.firstname);
+			
+			util.Clear(element_obj.lastname);
+
+			util.Sendkeys(element_obj.lastname,data_obj.lastname);
+
+			util.Clear(element_obj.address1);
+			
+			util.Sendkeys(element_obj.address1,"5411 3rd St");
+
+			util.Clear(element_obj.city);
+			
+			util.Sendkeys(element_obj.city,"San Francisco");
+
+			util.Clear(element_obj.zipcode);
+			
+			util.Sendkeys(element_obj.zipcode,"94124-2605");
+
+			Select country = new Select(element_obj.countryField);
+			country.selectByVisibleText("United States");
+			
+				Select state = new Select(element_obj.Bill_stateField);
+				state.selectByVisibleText("California");
+				
+				util.Clear(element_obj.phone);
+				
+				util.Sendkeys(element_obj.phone,data_obj.Phone);
+			
+				
+				
+
+		     
+		     if(data_obj.preorder_flag > 1)
+				{
+					util.Click(element_obj.preorder_ack);
+				}
+		     
+		}	
+		
+		catch(Exception ex)
+		{
+			
+			System.out.println("Entering Catch");
+			
+			util.Clear(element_obj.address1);
+			
+			util.Sendkeys(element_obj.address1,"5411 3rd St");
+
+			util.Clear(element_obj.city);
+			
+			util.Sendkeys(element_obj.city,"San Francisco");
+			
+			Select country = new Select(element_obj.countryField);
+			country.selectByVisibleText("United States");
+
+			util.Clear(element_obj.zipcode);
+			
+			util.Sendkeys(element_obj.zipcode,"94124-2605");
+			
+			Select state = new Select(element_obj.stateField);
+			state.selectByVisibleText("California");
+			
+			util.Clear(element_obj.phone);
+			
+			util.Sendkeys(element_obj.phone,"9858989588");
+			
+			util.WaitAndClick(element_obj.continuebill);
+			
+			if(util.Isdisplayed(element_obj.userAddress)) 
+			{
+				util.WaitAndClick(element_obj.userAddress);
+			}
+			
+			
+			
+		}	
+		
+		func.smoke_payment("Amex");
+			
+			if(util.Isdisplayed(element_obj.shpInt))
+			{
+				util.Click(element_obj.shpInt);
+				
+			}
+						
+			util.Click(element_obj.continuePlaceorder);
+			
+			if(util.Isdisplayed(element_obj.userAddress)) 
+			{
+				util.WaitAndClick(element_obj.userAddress);
+				util.WaitAndClick(element_obj.continuePlaceorder);
+
+			}
+			
+			if(util.Isdisplayed(element_obj.driver.findElement(By.xpath("//div[@class='place-order-header']//child::h2"))))
+			{
+				System.out.println("Gift Certificate Validation successful");
+			}
+	}
 	
+	
+}		
+		
+
 		
 		
 		
 		
-}
+
 
 
 

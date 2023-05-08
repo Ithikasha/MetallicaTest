@@ -45,7 +45,7 @@ public class Orderconfirmation {
 		{
 			data_regression.orderNumber = element_obj.orderNumber.getText().toString();
 			
-			System.out.println("\t\t\t"+data_regression.orderNumber.substring(8).strip());
+			System.out.println("\t\t\t"+data_regression.orderNumber);
 			
 			System.out.println("\t\t\t"+"Order Number displayed Successfully");
 			func.write_Regressiontest(true, 49);

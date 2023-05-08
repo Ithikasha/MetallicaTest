@@ -88,7 +88,9 @@ public static driverUtil util = new driverUtil();
 			
 //			hp.Click_Product_Link_in_Cart_Page();
 			
-			hp.Shipping_and_Billing_address_validation();
+//			hp.Shipping_and_Billing_address_validation();
+			
+			hp.GiftCertificate_Validation();
 			
 			
 		

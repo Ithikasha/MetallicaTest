@@ -55,7 +55,7 @@ public class constantData {
 	
 	public String DEV03_url = "https://dev03-na01-metallica.demandware.net/s/Metallica/home/";
 	
-	public String filePath = "C:\\Users\\UTIS LAPTOP 38\\Desktop";
+	public String filePath = "Excelsheets";
 	
 	public String username = "ithikasha@unitedtechno.com"; //ithikasha@unitedtechno.com , qatest0975@gmail.com
 	
@@ -63,9 +63,9 @@ public class constantData {
 	
 	public String PRD_password = "Ithi@utis07";
 	
-	public String fileName = "Metallica.xls";
+	public String fileName = "Bulk Order.xls";
 
-	public String sheetName = "032422";
+	public String sheetName = "International03012022";
 	
 	public int totalOrder = 30;
 	

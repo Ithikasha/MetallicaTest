@@ -24,6 +24,7 @@ import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
@@ -57,7 +58,112 @@ public class Functions {
 	   element_obj=elem;
 //	   SiteData=site;
    }
+   
+   
+   public void DigitalCosts() throws IOException
+   {
+	   
+	   	
+	   		
+	   
+		   data_obj.shippinging_cost = element_obj.Shipping_cost.getText().toString();
+			
+			System.out.println(data_obj.shippinging_cost);
+			
+			data_obj.salesTax = element_obj.salesTax.getText().toString();
+
+			System.out.println(data_obj.salesTax);
+
+			data_obj.orderTotal = element_obj.orderTotal.getText().toString();
+
+			System.out.println(data_obj.orderTotal);
+			
+			WriteDigitalOrderDetail(data_obj.orderCount, data_obj.orderNumber, data_obj.salesTax, data_obj.orderTotal, data_obj.shippinging_cost,data_obj.subTotal);
+		   
+		   
+		   
+	   
+   }
 	
+   public void DigitalAddress(String orderType) throws InterruptedException
+   {
+	   
+	   util.Clear(element_obj.firstname);
+
+		util.Sendkeys(element_obj.firstname,data_obj.firstname);
+		
+		util.Clear(element_obj.lastname);
+
+		util.Sendkeys(element_obj.lastname,data_obj.lastname);
+
+		util.Clear(element_obj.address1);
+		
+		util.Sendkeys(element_obj.address1,element_obj.Address1);
+
+		util.Clear(element_obj.city);
+		
+		util.Sendkeys(element_obj.city,element_obj.City);
+
+		util.Clear(element_obj.zipcode);
+		
+		util.Sendkeys(element_obj.zipcode,element_obj.Zip_Code);
+
+		if(orderType.equalsIgnoreCase("Domestic"))
+		{
+			Select state = new Select(element_obj.Bill_stateField);
+			state.selectByVisibleText(element_obj.State);
+			
+			util.Clear(element_obj.phone);
+			
+			util.Sendkeys(element_obj.phone,data_obj.Phone);
+		}
+				
+		if(orderType.equalsIgnoreCase("International"))
+		{
+			Select country = new Select(element_obj.countryField);
+			country.selectByVisibleText(element_obj.Country);
+			
+			
+			switch(element_obj.Country)
+			{
+			case "United Kingdom":
+				
+				util.Clear(element_obj.phone);
+				
+				util.Sendkeys(element_obj.phone,"9856475245255");
+				
+				break;
+				
+			case "France":
+				
+				util.Clear(element_obj.phone);
+				
+				util.Sendkeys(element_obj.phone,"06457894141");
+				
+				break;
+				
+			case "Canada":
+				
+				Thread.sleep(2000);
+				
+				Select state = new Select(element_obj.CAstateField);
+				state.selectByVisibleText(element_obj.State);
+				
+				break;
+				
+			default:
+				
+				util.Clear(element_obj.phone);
+				
+				util.Sendkeys(element_obj.phone,data_obj.Phone);
+				
+				break;
+			}		
+		}
+		
+	      }
+   
+   
 	
    public static Workbook fileSetup(FileInputStream istream, String fileName) throws IOException
    {
@@ -128,6 +234,13 @@ public class Functions {
 			System.out.println("Variable data_obj are Collected");
 
 			data_obj.flag = selectItems();
+			
+			if(util.Isdisplayed(element_obj.driver.findElement(By.xpath("//div[@class='billing-header']"))))
+			{
+				
+			  DigitalAddress("Domestic");
+			 
+			}
 			
 			if(data_obj.flag==false)
 			{
@@ -207,6 +320,8 @@ public class Functions {
 			element_obj.couponCode = formatter.formatCellValue(row.getCell(17));
 
 //			System.out.println("Variable data_obj are Collected");
+			
+			
 
 			data_obj.flag = selectItems();
 			
@@ -214,10 +329,12 @@ public class Functions {
 			{
 				continue;
 			}
-
+			
+			
 			data_obj.flag = shipping("Domestic") ;
 			
-			if(data_obj.flag==false)
+		    if(data_obj.flag==false)
+				
 			{
 				continue;
 			}
@@ -330,8 +447,6 @@ public class Functions {
 
 			element_obj.Payment_Method = formatter.formatCellValue(row.getCell(9));
 			
-			
-
 			System.out.println("Variable data_obj are Collected");
 
 			data_obj.flag = selectItems();
@@ -343,6 +458,8 @@ public class Functions {
 			}
 
 			shipping("International") ;
+			
+			Thread.sleep(2000);
 
 			payment() ;
 		
@@ -406,7 +523,7 @@ public class Functions {
 
 			shipping("International") ;
 
-			payment() ;
+			payment();
 		
 			data_obj.flag = placeOrder("International") ;
 			
@@ -487,25 +604,36 @@ public void orderConfirmation(String filePath, String fileName, String sheetName
 
 	data_obj.orderNumber = element_obj.orderNumber.getText().toString();
 
-	System.out.println(data_obj.orderNumber.substring(8));
+	System.out.println(data_obj.orderNumber);
 	
 	data_obj.subTotal = element_obj.Subtotal.getText().toString();
 
 	System.out.println(data_obj.subTotal);
 	
-	if(util.Isdisplayed(element_obj.Shipping_cost)) {
+		util.Isdisplayed(element_obj.Shipping_cost);
+		  
+		 data_obj.shippinging_cost = element_obj.Shipping_cost.getText().toString();
+		 
+		 if(element_obj.Shipping_cost.getText().toString().equalsIgnoreCase("$0.00"))
+		 {
+			   
+ 		DigitalCosts();  
+ 		
+ 		}
+	  
+	  
+		 else
+	  {
+		  
+	 	if(util.Isdisplayed(element_obj.Shipping_cost)) 
+	 	{
 	
 		data_obj.shippinging_cost = element_obj.Shipping_cost.getText().toString();
+		
+		System.out.println(data_obj.shippinging_cost);
 	}
 
-	else{
-	
-		data_obj.shippinging_cost1 = element_obj.Shipping_cost1.getText().toString();
-	
-		data_obj.shippinging_cost2 = element_obj.Shipping_cost2.getText().toString();
-	
-		data_obj.shippinging_cost = data_obj.shippinging_cost1.concat("+"+data_obj.shippinging_cost2);
-	}
+
 
 	data_obj.handling_cost = element_obj.Handling_cost.getText().toString();
 
@@ -521,9 +649,10 @@ public void orderConfirmation(String filePath, String fileName, String sheetName
 
 	writeOrderDetail(data_obj.orderCount, data_obj.orderNumber, data_obj.handling_cost, data_obj.salesTax, data_obj.orderTotal, data_obj.shippinging_cost,data_obj.subTotal,filePath,fileName,sheetName);
 
-	util.snapShots(data_obj.driver,"C:\\Users\\UNITS\\Documents\\Metallica_orders\\Order"+data_obj.orderCount+".png");
+//	util.snapShots(data_obj.driver,"C:\\Users\\UNITS\\Documents\\Metallica_orders\\Order"+data_obj.orderCount+".png");
+	
 }
-
+}
 
 public boolean selectItems() throws InterruptedException, Exception 
 {
@@ -630,6 +759,9 @@ public boolean selectItems() throws InterruptedException, Exception
 	return true;
 
 }
+   
+	   
+	   
    
 	
 	public void cartCheckout() throws InterruptedException 
@@ -769,9 +901,6 @@ public void Logout() throws InterruptedException {
 //				
 //			}
 		}
-		
-		
-		
 
 	}
 
@@ -779,6 +908,23 @@ public void Logout() throws InterruptedException {
 	{
 		//no.click()
 		
+		
+		
+		try
+		{
+			
+			util.Isdisplayed(element_obj.driver.findElement(By.xpath("//div[@id='billing-address-header']")));
+			
+		     DigitalAddress("Domestic");
+		     
+		     if(data_obj.preorder_flag > 1)
+				{
+					util.Click(element_obj.preorder_ack);
+				}
+		     
+		}		
+		catch(Exception ex)
+		{
 		util.Clear(element_obj.firstname);
 
 		util.Sendkeys(element_obj.firstname,data_obj.firstname);
@@ -852,8 +998,20 @@ public void Logout() throws InterruptedException {
 			}		
 			
 		}
-
 		
+		if(data_obj.preorder_flag > 1)
+		{
+			util.Click(element_obj.preorder_ack);
+		}
+
+		util.WaitAndClick(element_obj.continuebill);
+		
+		if(util.Isdisplayed(element_obj.userAddress)) 
+		{
+			util.WaitAndClick(element_obj.userAddress);
+		}
+		
+		}
 
 //		util.Click(element_obj.useAsBillingAddress); //check-box to keep shipping address as billing address
 //
@@ -873,20 +1031,9 @@ public void Logout() throws InterruptedException {
 //			System.exit(0);
 //		}
 		
-		if(data_obj.preorder_flag > 1)
-		{
-			util.Click(element_obj.preorder_ack);
-		}
-
-		util.WaitAndClick(element_obj.continuebill);
 		
-		if(util.Isdisplayed(element_obj.userAddress)) 
-		{
-			util.WaitAndClick(element_obj.userAddress);
-		}
-		
-		return true;
-
+		return true;	
+	
 	}
 
 	public void captureShippingMethod() throws Exception {
@@ -1329,6 +1476,61 @@ public void Logout() throws InterruptedException {
 			
 	}
 	
+	
+	public void WriteDigitalOrderDetail(int rowNumber, String orderNumber, String salesTax, String orderTotal, String shippinging_cost, String subtotal) throws IOException
+	{
+		
+		File file = new File(data_obj.filePath+"\\"+data_obj.fileName);
+
+		FileInputStream istream = new FileInputStream(file);
+
+		Workbook book = fileSetup(istream,data_obj.fileName);
+
+		Sheet sheet = book.getSheet(data_obj.sheetName);
+
+		Row row = sheet.getRow(rowNumber);
+		
+		Cell orderNumber_cell = row.createCell(10);
+		
+		orderNumber_cell.setCellType(orderNumber_cell.CELL_TYPE_STRING);
+
+		orderNumber_cell.setCellValue(orderNumber);
+	    
+	    Cell shippingCost_cell = row.createCell(11);
+		
+	    shippingCost_cell.setCellType(shippingCost_cell.CELL_TYPE_STRING);
+
+	    shippingCost_cell.setCellValue(shippinging_cost);
+	    
+        Cell salesTax_cell = row.createCell(13);
+		
+	    salesTax_cell.setCellType(shippingCost_cell.CELL_TYPE_STRING);
+
+	    salesTax_cell.setCellValue(salesTax);
+	    
+	    Cell orderTotal_cell = row.createCell(14);
+		
+	    orderTotal_cell.setCellType(orderTotal_cell.CELL_TYPE_STRING);
+
+	    orderTotal_cell.setCellValue(orderTotal);
+	    
+	    Cell subtotal_cell = row.createCell(15);
+		
+	    subtotal_cell.setCellType(subtotal_cell.CELL_TYPE_STRING);
+
+	    subtotal_cell.setCellValue(subtotal);
+	     
+	    istream.close(); 
+	    	    
+	    FileOutputStream outputstream = new FileOutputStream(data_obj.filePath+"\\"+data_obj.fileName);
+		
+	    book.write(outputstream);
+	    
+	    outputstream.close();
+		
+	}
+	
+	
 	@SuppressWarnings("static-access")
 	public void writeOrderDetail(int rowNumber, String orderNumber, String handling_cost, String salesTax, String orderTotal, String shippinging_cost, String subtotal) throws IOException
 	{
@@ -1378,7 +1580,6 @@ public void Logout() throws InterruptedException {
 
 	    subtotal_cell.setCellValue(subtotal);
 	    
-	    
 	    istream.close(); 
 	    	    
 	    FileOutputStream outputstream = new FileOutputStream(data_obj.filePath+"\\"+data_obj.fileName);
@@ -1408,7 +1609,7 @@ public void Logout() throws InterruptedException {
 		
 		orderNumber_cell.setCellType(orderNumber_cell.CELL_TYPE_STRING);
 
-		orderNumber_cell.setCellValue(orderNumber.substring(14));
+		orderNumber_cell.setCellValue(orderNumber);
 	    
 	    Cell shippingCost_cell = row.createCell(11);
 		
@@ -1428,13 +1629,13 @@ public void Logout() throws InterruptedException {
 
 	    salesTax_cell.setCellValue(salesTax);
 	    
-	    Cell subtotal_cell = row.createCell(14);
+	    Cell subtotal_cell = row.createCell(15);
 		
 	    subtotal_cell.setCellType(subtotal_cell.CELL_TYPE_STRING);
 
 	    subtotal_cell.setCellValue(subtotal);
 	    
-	    Cell orderTotal_cell = row.createCell(15);
+	    Cell orderTotal_cell = row.createCell(14);
 		
 	    orderTotal_cell.setCellType(orderTotal_cell.CELL_TYPE_STRING);
 

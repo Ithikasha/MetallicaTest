@@ -83,6 +83,8 @@ public class SiteMonitoring {
 		
 		Discourse();
 		
+//		GiftCertificate_Validation();
+		
 		MiniCartOverlay();  
 		
 		ServiceCloud();
@@ -133,6 +135,7 @@ public class SiteMonitoring {
 			functions.write_SiteMonitoring(SiteData.result, 1);
 			
 		}
+		
 		else
 		{
 			util.Click(elements.SP_BackToCart);
@@ -158,7 +161,7 @@ public class SiteMonitoring {
 	
 	public static void ShipperHQ_Preorder() throws Exception  
 	{
-		functions.Add_Preorder("72 SEASONS COLORED VINYL - SMOKY BLACK (2LP)");
+		functions.Add_Preorder("Messengers: The Guitars of James Hetfield by James Hetfield (Hardcover Book)");
 		
 		util.Click(elements.checkout);
 		
@@ -573,7 +576,7 @@ public class SiteMonitoring {
 	public static void Loqate() throws Exception
 	{
 	
-		System.out.println("\tLoqate Testing");	
+	System.out.println("\tLoqate Testing");	
 		
 	util.Click(elements.checkout);
 	
@@ -599,6 +602,7 @@ public class SiteMonitoring {
 	util.WaitAndClick(elements.continuebill);
 	
 	if(util.Isdisplayed(elements.userAddress)) 
+		
 		{
 			util.WaitAndClick(elements.userAddress);
 		
@@ -611,15 +615,26 @@ public class SiteMonitoring {
 			SiteData.result = true;
 					
 			functions.write_SiteMonitoring(SiteData.result, 9);		
+			
+			util.Click(elements.remove);
+			
+			
 		}	
+	
 	else
+		
 		{
+		
+		util.WaitAndClick(elements.SP_BackToCart);
 		
 		System.out.println("\t\t\t"+"Loqate validation unsuccessful");
 		
 		SiteData.result = false;
 		
 		functions.write_SiteMonitoring(SiteData.result, 9);
+		
+		util.Click(elements.remove);
+		
 		
 		}	
 	}
@@ -947,16 +962,7 @@ public class SiteMonitoring {
 			
 			util.Click(elements.miniviewcart);
 			
-			int Site = elements.Multipleremove.size();
-			
-			System.out.println(Site);
-			
-			for(int i=1; i <= Site; i++)
-			
-			{
-				util.Click(elements.Multipleremove.get(0));
-				
-		    } 
+			util.Click(elements.remove);
 			
 		}
 		else
@@ -970,16 +976,7 @@ public class SiteMonitoring {
 			
 			util.Click(elements.miniviewcart);
 			
-			int Site = elements.Multipleremove.size();
-			
-			System.out.println(Site);
-			
-			for(int i=1; i <= Site; i++)
-			
-			{
-				util.Click(elements.Multipleremove.get(0));
-				
-		    } 
+			util.Click(elements.remove);
 			
 //			data.driver.close();
 			
@@ -2878,8 +2875,124 @@ public class SiteMonitoring {
 					
 		
 		}
+		
+		public static void GiftCertificate_Validation() throws Exception
+		{
+			
+			GCOnly_Validation();
+			
+			GCwithRegular_Validation();
+			
+			
+			
+		}
 
-	
+		public static void GCOnly_Validation() throws Exception
+		{
+			
+			data.driver.get(data.Prod_url);
+			
+			if(util.Isdisplayed(elements.no))
+			{
+				util.Click(elements.no);
+			}
+			
+			functions.PRD_login();
+			
+			util.Click(elements.srch);
+			
+			util.Click(elements.SearchBar);
+			
+			util.Sendkeys(elements.srchIP,"Gift Certificate");
+
+			elements.srchTxt.submit();
+			
+			util.Click(elements.GiftCertificateProduct);
+			
+			util.Clear(elements.YourNameField);
+			
+			util.Sendkeys(elements.YourNameField, "TesterMetallica");
+			
+			util.Sendkeys(elements.FriendNameField, "Ithikash");
+			
+			util.Sendkeys(elements.FriendEmailField, "ithikasha@unitedtechno.com");
+			
+			util.Sendkeys(elements.ConfirmFriendEmail, "ithikasha@unitedtechno.com");
+			
+			util.Sendkeys(elements.MessageField, "Test");
+			
+			util.Sendkeys(elements.AmountField, "100");
+			
+			util.Click(elements.AddToCartCTA);
+			
+			util.Click(elements.checkout);
+			
+			if(util.Isdisplayed(elements.driver.findElement(By.xpath("//div[@id='billing-address-header']"))))
+			{
+				
+			System.out.println("GC Only Validation successful");
+			
+				
+ 			    System.out.println("Gift Certificate validation succesful with Only GC in Cart");
+ 			    
+ 			    SiteData.result = true;
+				
+				functions.write_SiteMonitoring(SiteData.result, 15);
+		}
+				
+				else
+				{
+					System.out.println("Gift Certificate validation unsuccesful with Only GC in Cart");
+					
+					SiteData.result = false;
+					
+					functions.write_SiteMonitoring(SiteData.result, 15);
+					
+				}
+			
+			util.WaitAndClick(elements.SP_BackToCart);
+ 				
+			     
+			}	
+			
+		public static void GCwithRegular_Validation() throws Exception
+			{
+				
+			functions.Add_product("BUFFALO 2022 TOUR T-SHIRT - MEDIUM");
+			
+			util.Click(elements.checkout);
+			
+			if(util.Isdisplayed(elements.driver.findElement(By.xpath("(//h2[text()='1. Shipping'])[2]"))))
+			   {
+				
+				   System.out.println("\t\t\tGift Certificate validation succesful with GC and Regular product in Cart");
+				   
+				   SiteData.result = true;
+					
+					functions.write_SiteMonitoring(SiteData.result, 16);
+					
+			   }
+			
+			else
+			{
+				 System.out.println("\t\t\tGift Certificate validation unsuccesful with GC and Regular product in Cart");
+				 
+				 SiteData.result = false;
+					
+				functions.write_SiteMonitoring(SiteData.result, 16);
+				
+			}
+				
+								
+				util.WaitAndClick(elements.SP_BackToCart);
+				
+				util.Click(elements.remove);
+				
+				util.Click(elements.GiftRemove);
+				
+				
+				
+		}
 	
 						
 }

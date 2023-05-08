@@ -55,7 +55,7 @@ public class placeOrder {
 			
 			functions.bulkOrder_testing("Excelsheets","Bulk Order.xls","06072022",27,"Regression");
 
-			functions.bulkOrder_International("Regression");
+//			functions.bulkOrder_International("Regression");
 			
 			data.driver.close();	
 			
