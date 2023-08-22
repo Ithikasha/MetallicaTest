@@ -745,7 +745,7 @@ public class Shippingpage {
 			prod_list.add(i-1,element_obj.driver.findElement(By.xpath("(//div[@class='shipping-method-products']//child::span)["+i+"]")).getText().substring(1));
 		}
 		
-		System.out.println(prod_list);
+		       System.out.println(prod_list);
 		
 		Collections.sort(prod_list);
 		

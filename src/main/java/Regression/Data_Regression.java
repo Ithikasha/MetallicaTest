@@ -37,6 +37,8 @@ public class Data_Regression {
 			
 	public String URL =  " https://www.metallica.com/"; // https://www.metallica.com/ , https://ithikasha@unitedtechno.com:Ithi@sfcc07feb@staging.rockdevelop.com/ , https://ithikasha@unitedtechno.com:Ithi@sfcc07feb@development.rockdevelop.com/
 	
+	public String AlgoliaURL = "https://www.metallica.com/search/?q=Robert&csort=otn&viewAllContent=true";
+	
 	public static String email = "ithikasha@unitedtechno.com" ; //ithikasha@unitedtechno.com , qatest0975@gmail.com
 	
 	public static String password = "Ithi@utis07" ; //Ithi@met07 , Qatest@met07 , Ithi@utis07
@@ -44,7 +46,7 @@ public class Data_Regression {
 	public static String subject = "Testing";
 	
 	public static String Gift;
-	
+	 
 	public static String Gift1;
 	
 	public static String Gift2;
@@ -120,8 +122,8 @@ public class Data_Regression {
 	public int totalTest = 4;
 	
 	public static List<String> PDP_price = new ArrayList<>();
-
-	public static List<String> PDP_prdName = new ArrayList<>() ;
+	
+    public static List<String> PDP_prdName = new ArrayList<>() ;
 	
 	public static List<String> CP_price = new ArrayList<>();
 

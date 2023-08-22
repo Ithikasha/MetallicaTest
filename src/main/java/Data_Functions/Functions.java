@@ -59,6 +59,98 @@ public class Functions {
 //	   SiteData=site;
    }
    
+   public void RegressionOrdersDomestic(String type) throws Exception
+   {
+	   
+	    DataFormatter formatter = new DataFormatter();
+
+		File file = new File(data_obj.filePath+"\\"+data_obj.fileName);
+
+		FileInputStream istream = new FileInputStream(file);
+
+		Workbook book = fileSetup(istream,data_obj.fileName);
+
+		Sheet sheet = book.getSheet(data_obj.sheetName);
+
+		if(type=="Regression")
+		{
+			login();
+		}
+
+		for (data_obj.orderCount = 1; data_obj.orderCount < data_obj.totalOrder; data_obj.orderCount++) {
+
+			data_obj.flag = true;
+			
+			Row row = sheet.getRow(data_obj.orderCount);
+
+			element_obj.itemlist = formatter.formatCellValue(row.getCell(1)).split(",");
+
+			element_obj.qty = formatter.formatCellValue(row.getCell(2)).split(",");
+			
+			element_obj.variant = formatter.formatCellValue(row.getCell(3)).split(",");
+
+			element_obj.Address1 = formatter.formatCellValue(row.getCell(4));
+
+			element_obj.City = formatter.formatCellValue(row.getCell(5));
+
+			element_obj.Zip_Code = formatter.formatCellValue(row.getCell(6)); 
+			
+			element_obj.State = formatter.formatCellValue(row.getCell(7)); 
+
+			element_obj.Shipping_Method = formatter.formatCellValue(row.getCell(8));
+
+			element_obj.Payment_Method = formatter.formatCellValue(row.getCell(9));
+			
+			element_obj.couponCode = formatter.formatCellValue(row.getCell(17));
+
+			System.out.println("product details are Collected");
+
+			data_obj.flag = selectItems();
+			
+			if(util.Isdisplayed(element_obj.driver.findElement(By.xpath("//div[@class='billing-header']"))))
+			{
+				
+			  DigitalAddress("Domestic");
+			 
+			}
+			
+			if(data_obj.flag==false)
+			{
+				continue;
+			}
+
+			data_obj.flag = shipping("Domestic") ;
+			
+			if(data_obj.flag==false)
+			{
+				continue;
+			}
+
+			payment() ;
+			
+			if(data_obj.flag==false)
+			{
+				continue;
+			}
+			
+			data_obj.flag = placeOrder("Domestic") ;
+			
+			if(data_obj.flag==false)
+			{
+				continue;
+			}
+
+			orderConfirmation();
+		}
+	   
+	   
+	   
+	   
+	   
+	   
+	   
+   }
+   
    
    public void DigitalCosts() throws IOException
    {
@@ -2545,6 +2637,142 @@ public void Logout() throws InterruptedException {
 		outputstream.close();
 		
 	}
+	
+	
+	public void Hostek(boolean result,int number) throws IOException
+	{
+		
+		File file = new File(SiteData.filePath+"\\"+SiteData.Result_fileName);
+
+		FileInputStream istream = new FileInputStream(file);
+
+		Workbook book = fileSetup(istream,SiteData.Result_fileName);
+
+		Sheet sheet = book.getSheet(SiteData.Result_sheetName);
+ 
+		Row row = sheet.getRow(number);
+		
+		String value ;
+		
+		if(result)
+		{
+			value = "PASS"; 
+		}
+		else
+		{
+			value = "FAIL";
+			
+			if(number == 16) 
+			{
+				Cell result_cell = row.createCell(5);
+				
+				result_cell.setCellType(result_cell.CELL_TYPE_STRING);
+
+				if(SiteData.FailedMandatoryField == null)
+				{
+
+					result_cell.setCellValue(" Failed Contest Lists "+SiteData.FailedContestLists);
+					
+				
+				}
+				
+				else
+				{
+					
+					SiteData.FailedContestLists = SiteData.FailedContestLists.substring(0,SiteData.FailedContestLists.length() -1);
+					
+					result_cell.setCellValue(" Failed Contest Lists: "+SiteData.FailedContestLists);
+			}
+			
+			
+		}
+				
+				}
+		
+		Cell result_cell = row.createCell(4);
+		
+		result_cell.setCellType(result_cell.CELL_TYPE_STRING);
+
+		result_cell.setCellValue(value);
+				
+		istream.close(); 
+		 	    
+		FileOutputStream outputstream = new FileOutputStream(SiteMonitoring.SiteMonitoringConstantData.filePath+"\\"+SiteMonitoring.SiteMonitoringConstantData.Result_fileName);
+		
+		book.write(outputstream);
+			    
+		outputstream.close();
+		
+		
+	}
+	
+	
+public void Amplience(boolean result,int number) throws IOException
+{
+	File file = new File(SiteData.filePath+"\\"+SiteData.Result_fileName);
+
+	FileInputStream istream = new FileInputStream(file);
+
+	Workbook book = fileSetup(istream,SiteData.Result_fileName);
+
+	Sheet sheet = book.getSheet(SiteData.Result_sheetName);
+
+	Row row = sheet.getRow(number);
+	
+	String value ;
+	
+	if(result)
+	{
+		value = "PASS";
+	}
+	
+	else
+	{
+		value = "FAIL";
+		
+		if(number == 17) 
+		{
+			Cell result_cell = row.createCell(5);
+			
+			result_cell.setCellType(result_cell.CELL_TYPE_STRING);
+
+			if(SiteData.FailedMandatoryField == null)
+			{
+
+				result_cell.setCellValue(" Failed PastTour Lists "+SiteData.FailedPastTourDateLists);
+				
+			
+			}
+			
+			else
+			{
+				
+				SiteData.FailedContestLists = SiteData.FailedPastTourDateLists.substring(0,SiteData.FailedPastTourDateLists.length() -1);
+				
+				result_cell.setCellValue(" Failed PastTour Lists: "+SiteData.FailedPastTourDateLists);
+		}
+		
+		
+	}
+			
+	}
+	
+	Cell result_cell = row.createCell(4);
+	
+	result_cell.setCellType(result_cell.CELL_TYPE_STRING);
+
+	result_cell.setCellValue(value);
+			
+	istream.close(); 
+	 	    
+	FileOutputStream outputstream = new FileOutputStream(SiteMonitoring.SiteMonitoringConstantData.filePath+"\\"+SiteMonitoring.SiteMonitoringConstantData.Result_fileName);
+	
+	book.write(outputstream);
+		    
+	outputstream.close();
+
+
+}
 			
 	
 	public void InventoryCheck() throws Exception

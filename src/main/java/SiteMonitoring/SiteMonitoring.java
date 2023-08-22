@@ -5,10 +5,15 @@ import java.io.File;
 import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+
+import javax.swing.UIClientPropertyKey;
 
 import org.apache.poi.hssf.record.aggregates.DataValidityTable;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -56,10 +61,12 @@ public class SiteMonitoring {
 //		Email = Email.concat("Second line");
 //		
 //		System.out.println(Email);
-	
-		data.driver.get(data.Prod_url);
+	    
+		 
 		
 //		util.Click(elements.no);
+		
+		data.driver.get(data.Prod_url);
 		
 		functions.PRD_login();
 		
@@ -74,7 +81,7 @@ public class SiteMonitoring {
 //		ApplePay();
 //		
 //		PayPal();
-//		
+		
 //		Cloudinary();
 		
 		KnightLab();
@@ -87,8 +94,14 @@ public class SiteMonitoring {
 		
 		MiniCartOverlay();  
 		
-		ServiceCloud();
+		ServiceCloud();  
 		
+		Hostek();
+		
+		Amplience();
+		
+		Algolia();
+				
 		data.driver.close();
 		
 	}
@@ -900,7 +913,7 @@ public class SiteMonitoring {
 			util.Click(elements.no);
 		}
 	
-		functions.PRD_login();
+//		functions.PRD_login();
 		
 		util.Click(elements.srch);
 		
@@ -909,8 +922,16 @@ public class SiteMonitoring {
 		util.Sendkeys(elements.srchIP,"Shirt");
 
 		elements.srchTxt.submit();
-
-		Actions act = new Actions(data.driver);
+		
+		Thread.sleep(2000);
+		
+		JavascriptExecutor scrollup = (JavascriptExecutor) data.driver;
+		
+		Actions act = new Actions(data.driver);	
+		
+		act.sendKeys(Keys.PAGE_DOWN).build().perform();
+		
+		scrollup.executeScript("arguments[0].scrollIntoView(true);", elements.Product);
 		 
 		 act.moveToElement(elements.Product).perform();
 		 
@@ -1003,7 +1024,7 @@ public class SiteMonitoring {
 		
 		Others();
 		
-		Mandatoryfields();
+//		Mandatoryfields();
 		
 		
 	}
@@ -2176,6 +2197,8 @@ public class SiteMonitoring {
 					
 				util.Clear(elements.Ticketemail);
 				
+				Thread.sleep(2000);
+				
 				util.Click(elements.TicketSubmit);	
 				
 				if(util.Isdisplayed(elements.EmailError))
@@ -2993,8 +3016,312 @@ public class SiteMonitoring {
 				
 				
 		}
+		
+		public static void Hostek() throws Exception
+		{
+			
+			data.driver.get(data.Prod_url);
+			
+//			util.Click(elements.no);
+			
+//			func.PRD_login();
+			
+			util.Click(elements.srch);
+			
+			util.Click(elements.ContestsLink);
+			
+			int ContestLists = elements.ContestLists.size();
+			
+			System.out.println(ContestLists);
+			
+			int fail = 0;
+				
+			for(int i=1; i<=ContestLists; i++)
+				
+			{
+				
+				
+				String ContestName = elements.driver.findElement(By.xpath("//div[@class='show contest']//following::h4[text()]["+i+"]")).getText();
+				
+				String ContestLocation = elements.driver.findElement(By.xpath("//div[@class='show contest']//following::p["+i+"]")).getText();
+				
+				WebElement ContestButton = elements.driver.findElement(By.xpath("//div[@class='show contest']//following::div[@class='col col--xs-6 col--lg-7 ctas']["+i+"]"));
+					
+//				Assert.assertTrue(a.isDisplayed(),"Contest Name is displayed");
+//				
+//				Assert.assertTrue(b.isDisplayed(),"Contest Location is displayed");
+//				
+//				Assert.assertTrue(c.isDisplayed(),"Contest Button is displayed in "+i+" section");
+//				
+				if (ContestName != null )
+				{
+					System.out.println(ContestName);
+					System.out.println("\t\t\t"+"ContestsName validation successful");
+					}
+				
+				else
+				{
+					System.out.println("\t\t\t"+"ContestsName validation unsuccessful in Contest" + i + ContestName);	
+					SiteData.FailedContestLists = SiteData.FailedContestLists.concat( i + ContestName + ",");
+					fail++;
+				}	
+				
+				if (ContestLocation.length() != 0 )	
+				{
+					System.out.println(ContestLocation);
+					System.out.println("\t\t\t"+"ContestsLocation validation successful");
+					}
+				
+				else
+				{
+					System.out.println("\t\t\t"+"ContestsLocation validation unsuccessful in Contest" +  i + ContestName);
+					SiteData.FailedContestLists = SiteData.FailedContestLists.concat( i + ContestName);
+					fail++;
+				}	
+				
+				
+				if (ContestButton.isDisplayed())
+					
+				{
+					System.out.println("\t\t\t"+"ContestsButton validation successful");
+					}
+				
+				else
+				{
+					System.out.println("\t\t\t"+"ContestsButton validation unsuccessful in Contest" +  i + ContestName);
+					SiteData.FailedContestLists = SiteData.FailedContestLists.concat( i + ContestName);
+					fail++;
+				}	
+				
+			}
+			
+			if(fail>0)
+			{
+				System.out.println("\t\t\t"+"Contest Lists validation Unsuccessful");
+				functions.Hostek(false, 16);
+			}
+			
+			else
+			{
+				System.out.println("\t\t\t"+"Contest Lists validation Successful");
+				functions.Hostek(true, 16);
+				
+			
+			}
+			
+		}
+
+
+			
+		public static void Amplience() throws Exception
+		{
+			
+			data.driver.get(data.Prod_url);
+		   
+			util.Click(elements.srch);
+			
+			util.Click(elements.PastDatesLink);
+			
+			int PastdateLists = elements.PastDateLists.size();
+			
+			System.out.println(PastdateLists);
+			
+			int fail = 0;
+			
+			for(int i=1; i<=PastdateLists; i++)
+				
+			{
+				
+				String PastTourDate = elements.driver.findElement(By.xpath("(//a[@class='past-show-item']//following::span[@class='date-numbers']//following-sibling::p)["+i+"]")).getText();
+				
+				String PastTourLocation = elements.driver.findElement(By.xpath("//a[@class='past-show-item']//following::span[@class='venue-city'][text()]["+i+"]")).getText();
+				
+				String PastTourStadium = elements.driver.findElement(By.xpath("//a[@class='past-show-item']//following::span[@class='venue-name-wrap'][text()]["+i+"]")).getText();
+				
+				WebElement PastTourButton = elements.driver.findElement(By.xpath("//a[@class='past-show-item']//following::button[@class='button cta']["+i+"]"));
+				
+				if (PastTourDate.length() != 0 )
+				{
+					System.out.println(PastTourDate);
+					System.out.println("\t\t\t"+"PastTourDate validation successful");
+					}
+				
+				else
+				{
+					System.out.println("\t\t\t"+"PastTourDate validation unsuccessful in Contest" + i + PastTourLocation);	
+					SiteData.FailedPastTourDateLists = SiteData.FailedPastTourDateLists.concat( i + PastTourLocation);
+					fail++;
+				}	
+				
+				if (PastTourLocation.length() != 0 )	
+				{
+					System.out.println(PastTourLocation);
+					System.out.println("\t\t\t"+"PastTourLocation validation successful");
+					}
+				
+				else
+				{
+					System.out.println("\t\t\t"+"PastTourLocation validation unsuccessful in Contest" +  i + PastTourLocation);
+					SiteData.FailedPastTourDateLists = SiteData.FailedPastTourDateLists.concat( i + PastTourLocation);
+					fail++;
+				}	
+				
+				
+				if (PastTourStadium.length() != 0 )	
+				{
+					System.out.println(PastTourStadium);
+					System.out.println("\t\t\t"+"PastTourStadium validation successful");
+					}
+				
+				else
+				{
+					System.out.println("\t\t\t"+"PastTourStadium validation unsuccessful in Contest" +  i + PastTourLocation);
+					SiteData.FailedPastTourDateLists = SiteData.FailedPastTourDateLists.concat( i + PastTourLocation);
+					fail++;
+				}	
+				
+				
+				
+				if (PastTourButton.isDisplayed())
+					
+				{
+					System.out.println("\t\t\t"+"PastTourButton validation successful");
+					
+					}
+				
+				else
+				{
+					System.out.println("\t\t\t"+"PastTourButton validation unsuccessful in Contest" +  i + PastTourLocation);
+					SiteData.FailedPastTourDateLists = SiteData.FailedPastTourDateLists.concat( i + PastTourLocation);
+					fail++;
+				}	
+				
+			}
+			
+			if(fail>0)
+			{
+				System.out.println("\t\t\t"+"PastTourdates Lists validation Unsuccessful");
+				functions.Amplience(false, 17);
+			}
+			else
+			{
+				System.out.println("\t\t\t"+"PastTourdates Lists validation Successful");
+				functions.Amplience(true, 17);
+				
+			
+			}		
+				
+			}
+			
+			
+			public static void Algolia() throws InterruptedException, IOException
+			{
+				
+				int fail = 0;
+				
+				data.driver.get(data.Prod_url);
+				
+				functions.PRD_login();
+				
+				data.driver.get(data.AlgoliaUrl);
+				
+				int Pages = elements.Pages.size();
+				
+				System.out.println(Pages);
+				
+				if(Pages == 20)
+				{
+					
+					System.out.println("Content search result page contains 20 results - Success");
+					
+					SiteData.result = true;
+					
+					functions.write_SiteMonitoring(SiteData.result, 18);
+						
+				}
+				
+				else
+				{
+					
+					System.out.println("Content search result page does not contains 20 results - UnSuccessful");
+					
+					SiteData.result = false;
+					
+					functions.write_SiteMonitoring(SiteData.result, 18);
+				}
+					
+				List<String> list = new ArrayList<>();
+								
+				for(WebElement a : elements.ReadMoreLinks)
+				{
+					String  b = a.getAttribute("href");
+					
+					list.add(b);
+					
+				}
+				
+				 System.out.println(list);
+				
+				for(String c : list) 
+				{
+					
+					  data.driver.get(c);
+					  
+					  try {
+					        if(data.driver.findElement(By.xpath("//h1[contains(text(),'Page Not Found')]")).isDisplayed())
+					        {
+					      
+					        System.out.println("Failed in" + c);
+					        fail ++;
+					        
+					        }
+					        
+					  }
+					        
+						catch(Exception e)
+					        {
+					        	System.out.println("Passed");
+					        }        
+					       	      
+					
+					
+					
+			}
+//				for (int x = 0; x < Pages; x++)
+//					
+//				{
+//					
+//			        String  a= elements.ReadMoreLinks.get(x).getAttribute("href");
+//			       
+//			        System.out.println(a);
+//			        
+//			        data.driver.get(a);
+//			        
+//			        
+//				
+//				
+				if(fail>0)
+				{
+					System.out.println("\t\t\t"+"Links in the Content search result page validation unsuccessful");
+					
+					SiteData.result = false;
+					
+					functions.write_SiteMonitoring(SiteData.result, 19);
+					
+					
+				}
+				else
+				{
+					System.out.println("\t\t\t"+"Links in the Content search result page validation successful");
+					
+					SiteData.result = true;
+					
+					functions.write_SiteMonitoring(SiteData.result, 19);
+
+		}
 	
 						
+}
 }
 		
 		

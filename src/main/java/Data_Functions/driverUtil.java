@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.Properties;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
@@ -115,7 +116,7 @@ public class driverUtil {
 	public WebDriver chrome()
 	{
 //		System.setProperty("webdriver.chrome.driver","C:\\Users\\UNITS\\Documents\\BitBucket\\chromedriver_win32\\chromedriver.exe");
-		System.setProperty("webdriver.chrome.driver","C:\\Users\\UTIS LAPTOP 38\\Downloads\\chromedriver_win32 (11)\\chromedriver.exe");
+		System.setProperty("webdriver.chrome.driver","C:\\Users\\UTIS LAPTOP 38\\Downloads\\chromedriver-win32\\chromedriver-win32\\chromedriver.exe");
 //		System.setProperty("webdriver.chrome.driver","C:\\METALLICA\\Chromedriver\\chromedriver.exe");
 		
 //		System.setProperty("webdriver.chrome.driver","Chromedriver\\chromedriver.exe");
@@ -452,7 +453,7 @@ public class driverUtil {
             {
                 isElementLoaded = true;
                 break;
-            }
+            } 
             Thread.sleep(1000);
             waitTime++;
         }
@@ -499,6 +500,32 @@ public class driverUtil {
 		catch(StaleElementReferenceException se)
 		{
 			se.getMessage();
+		}
+		
+	}
+
+
+	public void ListClick(List<WebElement> pages) throws InterruptedException {
+		int count=0;
+		
+		while(count<10)
+		{
+			try
+			
+			{
+				((WebElement) pages).click();
+				break;
+			}
+			catch(StaleElementReferenceException ex)
+			{
+				if(count++<10)
+				{
+//					System.out.println("Retrying Click Method"+count);
+					Thread.sleep(1000);
+				}
+			
+			}
+			
 		}
 		
 	}

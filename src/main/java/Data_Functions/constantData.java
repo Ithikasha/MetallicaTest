@@ -45,7 +45,9 @@ public class constantData {
 	
 	public String DevTomsUrl = "https://sbxmetclub.tejassoftware.com/toms";
 	
-	public String ProdTomsusername = "ithikasha@unitedtechno.com";
+	public String AlgoliaUrl ="https://www.metallica.com/search/?q=Robert&csort=otn&viewAllContent=true";
+	
+	public String ProdTomsusername = "ithikasha@unitedtechno.com"; 
 	
 	public String ProdTomspassword = "Ithi@toms09nov";
 	

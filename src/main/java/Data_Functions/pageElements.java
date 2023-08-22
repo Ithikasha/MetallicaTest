@@ -3,6 +3,7 @@ package Data_Functions;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -269,7 +270,7 @@ public class pageElements {
 	@FindBy(xpath="//button[@class='add-to-cart button button--cta checkout guest-checkout cart-button']")
 	public WebElement Guest_CO;
 	
-	@FindBy(xpath="//li[@class='cart-row']//following-sibling::button[@value='Remove']")
+	@FindBy(xpath="//button[@value='Remove']")
 	public WebElement remove;
 	
 	@FindBy(xpath="//li[@class='cart-row rowgiftcert']//following-sibling::button[@value='Remove']")
@@ -480,7 +481,7 @@ public class pageElements {
 	@FindBy(xpath="//dd[@class='order-value order-total-value']") 
 	public WebElement BP_total;
 	
-	@FindBy(xpath="//dd[@class='order-sales-tax-value']") 
+	@FindBy(xpath="//dd[@class='order-sales-tax-value js-taxUpdated']") 
 	public WebElement BP_tax;
 	
 	@FindBy(xpath="//img[@class='paypal-logo']") 
@@ -955,7 +956,7 @@ public class pageElements {
 	@FindBy(xpath="//div[@class='g-recaptcha']")
 	public WebElement TicketReCpatcha;
 	
-	@FindBy(xpath="//input[@class='button button--cta']")
+	@FindBy(xpath="//input[@class='button button--cta js-contact-submit']")
 	public WebElement TicketSubmit;
 	
 	@FindBy(xpath="//iframe[@src='https://cdn.knightlab.com/libs/timeline3/latest/embed/index.html?source=1lHHq-yOZUoAli9ESa-Cbxwd0Tn9W1MbAW6wxLBKeE2Y&font=Default&lang=en&initial_zoom=7&height=650&start_at_end=true']")
@@ -994,7 +995,7 @@ public class pageElements {
 	@FindBy(xpath="//a[@id='quickviewbutton']")
 	public WebElement Quickview;
 	
-	@FindBy(xpath="(//img[@class='js-blazy b-loaded'])[3]")
+	@FindBy(xpath="(//img[@class='js-blazy b-loaded'])[1]")
 	public WebElement Product;
 	
 	@FindBy(xpath="(//a[contains(@title,'Small')])[2]")
@@ -1046,6 +1047,46 @@ public class pageElements {
 	
 	@FindBy(xpath="//*[@id='AddToBasketButton']")
 	public WebElement AddToCartCTA;
+	
+//Hostek(Contests)
+	
+	@FindBy(xpath="//a[@class=' menu-sub-nav-link menu-sub-nav-link--l2' and contains(text(),'Contests')]")
+	public WebElement ContestsLink;
+	
+	@FindBy(xpath="//div[@class='show contest']")
+	public List<WebElement> ContestLists;
+	
+	@FindBy(xpath="//div[@class='show contest']//following::h4")
+	public WebElement ContestsName;
+	
+	
+//Amplience(Content)
+
+	@FindBy(xpath="//a[@class=' menu-sub-nav-link menu-sub-nav-link--l2' and contains(text(),'Past Dates')]")
+	public WebElement PastDatesLink;
+	
+	@FindBy(xpath="//a[@class='past-show-item']")
+	public List<WebElement> PastDateLists;
+	
+	
+//Algolia(Content Search)
+	
+	@FindBy(xpath="//div[@class='show']")
+	public List<WebElement> Pages;
+	
+	@FindBy(xpath="//div[@class='read-more']")
+	public List<WebElement> ReadMore;
+	
+	@FindBy(xpath="//div[@class='error-page-message']")
+	public WebElement ErrorMessage;
+		
+	@FindBy(xpath="//a[text()='Read More']")
+	public List<WebElement> ReadMoreLinks;
+	
+	
+	
+	
+	
 	
 	
 	

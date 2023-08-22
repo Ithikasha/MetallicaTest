@@ -8,7 +8,7 @@ public class SiteMonitoringConstantData {
 		
 	public static String filePath =  "Excelsheets";
 	
-	public static String Result_sheetName = "Result";
+	public static String Result_sheetName = "Result"; 
 	
 	public String Input_sheetName = "input";
 	
@@ -19,10 +19,12 @@ public class SiteMonitoringConstantData {
 	public String PaypalURL = "https://metclub.tejassoftware.com/toms/Order/Search#?page=1&pageSize=50&criteria=F.PaymentMethodId.in.8";
 	
 	public String DevPaypalURL = "https://sbxmetclub.tejassoftware.com/toms/Order/Search#?page=1&pageSize=50&orderBy=ReferenceId&criteria=F.PaymentMethodId.in.8";
+	
+	public String AlgoliaURL = "https://www.metallica.com/search/?q=Robert&csort=otn&viewAllContent=true";
 			
 	public static String email = "ithikasha@unitedtechno.com" ; //ithikasha@unitedtechno.com , qatest0975@gmail.com
 	
-	public static String password = "Ithi@utis07" ;
+	public static String password = "Ithi@utis07";
 	
 	public static String ApplePay;
 	
@@ -35,6 +37,10 @@ public class SiteMonitoringConstantData {
 	public static String ServiceCloud_Result_sheetname = "ContactUsForm";
 	
 	public static String FailedMandatoryField = "Fields :";
+	
+	public static String FailedContestLists = "Section -  ";
+	
+	public static String FailedPastTourDateLists = "Section - ";
 	
 //	public static String ServiceCloud_input_sheetname = "input";
 	

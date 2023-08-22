@@ -1,5 +1,6 @@
 package Regression;
 
+import java.sql.Driver;
 import java.util.Timer;
 
 import org.openqa.selenium.By;
@@ -7,11 +8,16 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
+import org.testng.Assert;
+import java.util.List;
+
+
 
 import Data_Functions.Functions;
 import Data_Functions.constantData;
 import Data_Functions.driverUtil;
 import Data_Functions.pageElements;
+import SiteMonitoring.SiteMonitoringConstantData;
 
 public class Homepage {
 	
@@ -20,6 +26,7 @@ public class Homepage {
 	pageElements element_obj ;
 	Functions func ;
 	Data_Regression data_regression = new Data_Regression() ;
+	SiteMonitoringConstantData SiteData;
 	
 	public Homepage(constantData data,pageElements elem,Functions functions) throws Exception
 	   {
@@ -981,7 +988,262 @@ public class Homepage {
 	}
 	
 	
-}		
+	
+public void Hostek() throws Exception
+{
+	
+	data_obj.driver.get(data_obj.Prod_url);
+	
+//	util.Click(elements.no);
+	
+//	func.PRD_login();
+	
+	util.Click(element_obj.srch);
+	
+	util.Click(element_obj.ContestsLink);
+	
+	int ContestLists = element_obj.ContestLists.size();
+	
+	System.out.println(ContestLists);
+	
+	int fail = 0;
+		
+	for(int i=1; i<=ContestLists; i++)
+		
+	{
+		
+		
+		String ContestName = element_obj.driver.findElement(By.xpath("//div[@class='show contest']//following::h4[text()]["+i+"]")).getText();
+		
+		String ContestLocation = element_obj.driver.findElement(By.xpath("//div[@class='show contest']//following::p["+i+"]")).getText();
+		
+		WebElement ContestButton = element_obj.driver.findElement(By.xpath("//div[@class='show contest']//following::div[@class='col col--xs-6 col--lg-7 ctas']["+i+"]"));
+			
+//		Assert.assertTrue(a.isDisplayed(),"Contest Name is displayed");
+//		
+//		Assert.assertTrue(b.isDisplayed(),"Contest Location is displayed");
+//		
+//		Assert.assertTrue(c.isDisplayed(),"Contest Button is displayed in "+i+" section");
+//		
+		if (ContestName != null )
+		{
+			System.out.println(ContestName);
+			System.out.println("\t\t\t"+"ContestsName validation successful");
+			}
+		
+		else
+		{
+			System.out.println("\t\t\t"+"ContestsName validation unsuccessful in Contest" + i + ContestName);	
+			SiteData.FailedContestLists = SiteData.FailedContestLists.concat( i + ContestName + ",");
+			fail++;
+		}	
+		
+		if (ContestLocation.length() != 0 )	
+		{
+			System.out.println(ContestLocation);
+			System.out.println("\t\t\t"+"ContestsLocation validation successful");
+			}
+		
+		else
+		{
+			System.out.println("\t\t\t"+"ContestsLocation validation unsuccessful in Contest" +  i + ContestName);
+			SiteData.FailedContestLists = SiteData.FailedContestLists.concat( i + ContestName);
+			fail++;
+		}	
+		
+		
+		if (ContestButton.isDisplayed())
+			
+		{
+			System.out.println("\t\t\t"+"ContestsButton validation successful");
+			}
+		
+		else
+		{
+			System.out.println("\t\t\t"+"ContestsButton validation unsuccessful in Contest" +  i + ContestName);
+			SiteData.FailedContestLists = SiteData.FailedContestLists.concat( i + ContestName);
+			fail++;
+		}	
+		
+	}
+	
+	if(fail>0)
+	{
+		System.out.println("\t\t\t"+"Contest Lists validation Unsuccessful");
+		func.Hostek(false, 16);
+	}
+	
+	else
+	{
+		System.out.println("\t\t\t"+"Contest Lists validation Successful");
+		func.Hostek(true, 16);
+		
+	
+	}
+	
+}
+
+
+	
+public void Amplience() throws Exception
+{
+	
+    data_obj.driver.get(data_obj.Prod_url);
+   
+	util.Click(element_obj.srch);
+	
+	util.Click(element_obj.PastDatesLink);
+	
+	int PastdateLists = element_obj.PastDateLists.size();
+	
+	System.out.println(PastdateLists);
+	
+	int fail = 0;
+	
+	for(int i=1; i<=PastdateLists; i++)
+		
+	{
+		
+		String PastTourDate = element_obj.driver.findElement(By.xpath("(//a[@class='past-show-item']//following::span[@class='date-numbers']//following-sibling::p)["+i+"]")).getText();
+		
+		String PastTourLocation = element_obj.driver.findElement(By.xpath("//a[@class='past-show-item']//following::span[@class='venue-city'][text()]["+i+"]")).getText();
+		
+		String PastTourStadium = element_obj.driver.findElement(By.xpath("//a[@class='past-show-item']//following::span[@class='venue-name-wrap'][text()]["+i+"]")).getText();
+		
+		WebElement PastTourButton = element_obj.driver.findElement(By.xpath("//a[@class='past-show-item']//following::button[@class='button cta']["+i+"]"));
+		
+		if (PastTourDate.length() != 0 )
+		{
+			System.out.println(PastTourDate);
+			System.out.println("\t\t\t"+"PastTourDate validation successful");
+			}
+		
+		else
+		{
+			System.out.println("\t\t\t"+"PastTourDate validation unsuccessful in Contest" + i + PastTourLocation);	
+			SiteData.FailedPastTourDateLists = SiteData.FailedPastTourDateLists.concat( i + PastTourLocation);
+			fail++;
+		}	
+		
+		if (PastTourLocation.length() != 0 )	
+		{
+			System.out.println(PastTourLocation);
+			System.out.println("\t\t\t"+"PastTourLocation validation successful");
+			}
+		
+		else
+		{
+			System.out.println("\t\t\t"+"PastTourLocation validation unsuccessful in Contest" +  i + PastTourLocation);
+			SiteData.FailedPastTourDateLists = SiteData.FailedPastTourDateLists.concat( i + PastTourLocation);
+			fail++;
+		}	
+		
+		
+		if (PastTourStadium.length() != 0 )	
+		{
+			System.out.println(PastTourStadium);
+			System.out.println("\t\t\t"+"PastTourStadium validation successful");
+			}
+		
+		else
+		{
+			System.out.println("\t\t\t"+"PastTourStadium validation unsuccessful in Contest" +  i + PastTourLocation);
+			SiteData.FailedPastTourDateLists = SiteData.FailedPastTourDateLists.concat( i + PastTourLocation);
+			fail++;
+		}	
+		
+		
+		
+		if (PastTourButton.isDisplayed())
+			
+		{
+			System.out.println("\t\t\t"+"PastTourButton validation successful");
+			
+			}
+		
+		else
+		{
+			System.out.println("\t\t\t"+"PastTourButton validation unsuccessful in Contest" +  i + PastTourLocation);
+			SiteData.FailedPastTourDateLists = SiteData.FailedPastTourDateLists.concat( i + PastTourLocation);
+			fail++;
+		}	
+		
+	}
+	
+	if(fail>0)
+	{
+		System.out.println("\t\t\t"+"PastTourdates Lists validation Unsuccessful");
+		func.Amplience(false, 17);
+	}
+	else
+	{
+		System.out.println("\t\t\t"+"PastTourdates Lists validation Successful");
+		func.Amplience(true, 17);
+		
+	
+	}		
+		
+	}
+	
+	
+	public void Algolia() throws InterruptedException
+	{
+		
+		int fail = 0;
+		
+		data_obj.driver.get(data_obj.Prod_url);
+		
+		func.PRD_login();
+		
+		data_obj.driver.get(data_regression.AlgoliaURL);
+		
+		int Pages = element_obj.Pages.size();
+		
+		if(Pages == 20)
+		{
+			
+			System.out.println("Pass");
+				
+		}
+		
+		else
+		{
+			
+			System.out.println("Fail");
+		}
+		
+//		  List<WebElement> ReadMore = data_obj.driver.findElements(By.xpath("//a[text()='Read More']"));
+		   
+		for (int x = 7; x < Pages; x++) {
+		
+		   List<WebElement> ReadMore = data_obj.driver.findElements(By.xpath("//a[text()='Read More']"));
+			
+	       String  a= ReadMore.get(x).getAttribute("href");
+	        System.out.println(a);
+	        data_obj.driver.get(a);
+	        
+	        try {
+	        if(data_obj.driver.findElement(By.xpath("//h1[contains(text(),'Page Not Found')]")).isDisplayed())
+	        {
+	      
+	        System.out.println("Failed in" + a);
+	        fail ++;
+	        
+	        }}
+	        
+		catch(Exception e)
+	        {
+	        	System.out.println("Passed");
+	        }        
+	       	      
+	        data_obj.driver.navigate().back(); 
+		}
+
+
+}
+
+}
+		
 		
 
 		

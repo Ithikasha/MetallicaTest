@@ -90,9 +90,13 @@ public static driverUtil util = new driverUtil();
 			
 //			hp.Shipping_and_Billing_address_validation();
 			
-			hp.GiftCertificate_Validation();
+//			hp.GiftCertificate_Validation();
 			
+			hp.Hostek();
 			
+//			hp.Amplience();
+			
+//			hp.Algolia();
 		
 }
 	
