@@ -495,7 +495,8 @@ public class Homepage {
 				
 						
 			}
-			
+
+
 			public void SortBy() throws Exception
 			{
 				System.out.println("\t\tTestcase - 58");
@@ -1241,6 +1242,187 @@ public void Amplience() throws Exception
 
 
 }
+	
+	
+	public void AlgoliaSongs() throws InterruptedException
+	{
+		SeventyTwoSeasons();
+		
+		AintMyBitch();
+		
+		AllWithinMyHands();
+		
+		EnterSandman();
+		
+		IfDarknessHadASon();		
+		
+		}
+	
+	
+	public void SeventyTwoSeasons() throws InterruptedException
+	{
+		data_obj.driver.get(data_obj.Prod_url);
+		
+		util.Click(element_obj.srch);
+		
+		util.Click(element_obj.SongsandLyricsLink);
+		
+		util.waitForElementToLoad(element_obj.SongPageTitle);
+		
+		util.Click(element_obj.ChangeViewIcon);
+		
+		int SongLists = element_obj.SongsList.size();
+		
+		System.out.println(SongLists);
+		
+		SiteData.SeventyTwoSeasonsName = element_obj.SeventyTwoSeasonsName.getText().toString();
+		
+		SiteData.SeventyTwoSeasonsCount = element_obj.SeventyTwoSeasonsCount.getText().toString();
+		
+		System.out.println("Count for 72 Seasons in Songs List page");
+		
+		System.out.println(SiteData.SeventyTwoSeasonsName+" = "+ SiteData.SeventyTwoSeasonsCount);
+		
+		util.Click(element_obj.SeventyTwoSeasonsName);
+		
+		util.waitForElementToLoad(element_obj.CountInSongsDetailPage);
+		
+		SiteData.SeventyTwoSeasonsCountinSongsPage = element_obj.CountInSongsDetailPage.getText().toString();
+		
+		System.out.println("Count for 72 Seasons in Song Detail page");
+		
+		System.out.println(SiteData.SeventyTwoSeasonsName+" = "+SiteData.SeventyTwoSeasonsCountinSongsPage);
+		
+		data_obj.driver.navigate().back();
+		
+		if(SiteData.SeventyTwoSeasonsCount.equals(SiteData.SeventyTwoSeasonsCountinSongsPage))
+		{
+			System.out.println("Pass\n");			
+		}
+		
+	}
+	
+	
+	public void AintMyBitch() throws InterruptedException
+		{
+		
+		SiteData.AintMyBitchName = element_obj.AintMyBitchName.getText().toString();
+		
+		SiteData.AintMyBitchCount = element_obj.AintMyBitchCount.getText().toString();
+		
+		System.out.println("Count for Ain't My Bitch in Songs List page");
+		
+		System.out.println(SiteData.AintMyBitchName+" = "+ SiteData.AintMyBitchCount);
+		
+		util.Click(element_obj.AintMyBitchName);
+		
+		util.waitForElementToLoad(element_obj.CountInSongsDetailPage);
+		
+		SiteData.AintMyBitchCountinSongsPage = element_obj.CountInSongsDetailPage.getText().toString();
+		
+		System.out.println("Count for Ain't My Bitch in Song Detail page");
+		
+		System.out.println(SiteData.AintMyBitchName+" = "+SiteData.AintMyBitchCountinSongsPage);
+		
+		data_obj.driver.navigate().back();
+		
+		if(SiteData.AintMyBitchCount.equals(SiteData.AintMyBitchCountinSongsPage))
+		{
+			System.out.println("Pass\n");		
+		}
+		
+		}
+		
+		public void AllWithinMyHands() throws InterruptedException
+		{
+		
+		SiteData.AllWithinMyHandsName = element_obj.AllWithinMyHandsName.getText().toString();
+		
+		SiteData.AllWithinMyHandsCount = element_obj.AllWithinMyHandsCount.getText().toString();
+		
+		System.out.println("Count for All Within My Hands in Songs List page");
+		
+		System.out.println(SiteData.AllWithinMyHandsName+" = "+ SiteData.AllWithinMyHandsCount);
+		
+		util.Click(element_obj.AllWithinMyHandsName);
+		
+		util.waitForElementToLoad(element_obj.CountInSongsDetailPage);
+		
+		SiteData.AllWithinMyHandsCountinSongsPage = element_obj.CountInSongsDetailPage.getText().toString();
+		
+		System.out.println("Count for All Within MyHands in Song Detail page");
+		
+		System.out.println(SiteData.AllWithinMyHandsName+" = "+SiteData.AllWithinMyHandsCountinSongsPage);
+		
+		data_obj.driver.navigate().back();
+		
+		if(SiteData.AllWithinMyHandsCount.equals(SiteData.AllWithinMyHandsCountinSongsPage))
+		{
+			System.out.println("Pass\n");		
+		}
+		
+		}
+		
+		public void EnterSandman() throws InterruptedException
+		{
+		
+		SiteData.EnterSandmanName = element_obj.EnterSandmanName.getText().toString();
+		
+		SiteData.EnterSandmanCount = element_obj.EnterSandmanCount.getText().toString();
+		
+		System.out.println("Count for Enter Sandman in Songs List page");
+		
+		System.out.println(SiteData.EnterSandmanName+" = "+ SiteData.EnterSandmanCount);
+		
+		util.Click(element_obj.EnterSandmanName);
+		
+		util.waitForElementToLoad(element_obj.CountInSongsDetailPage);
+		
+		SiteData.EnterSandmanCountinSongsPage = element_obj.CountInSongsDetailPage.getText().toString();
+		
+		System.out.println("Count for Enter Sandman in Song Detail page");
+		
+		System.out.println(SiteData.EnterSandmanName+" = "+SiteData.EnterSandmanCountinSongsPage);
+		
+		data_obj.driver.navigate().back();
+		
+		if(SiteData.EnterSandmanCount.equals(SiteData.EnterSandmanCountinSongsPage))
+		{
+			System.out.println("Pass\n");		
+		}	
+		
+		}
+		
+		public void IfDarknessHadASon() throws InterruptedException
+		{
+		
+		SiteData.IfDarknessHadASonName = element_obj.IfDarknessHadASonName.getText().toString();
+		
+		SiteData.IfDarknessHadASonCount = element_obj.IfDarknessHadASonCount.getText().toString();
+		
+		System.out.println("Count for If Darkness Had A Son Name in Songs List page");
+		
+		System.out.println(SiteData.IfDarknessHadASonName+" = "+ SiteData.IfDarknessHadASonCount);
+		
+		util.Click(element_obj.IfDarknessHadASonName);
+		
+		util.waitForElementToLoad(element_obj.CountInSongsDetailPage);
+		
+		SiteData.IfDarknessHadASonCountinSongsPage = element_obj.CountInSongsDetailPage.getText().toString();
+		
+		System.out.println("Count for If Darkness Had A Son in Song Detail page");
+		
+		System.out.println(SiteData.IfDarknessHadASonName+" = "+SiteData.IfDarknessHadASonCountinSongsPage);
+		
+		data_obj.driver.navigate().back();
+		
+		if(SiteData.IfDarknessHadASonCount.equals(SiteData.IfDarknessHadASonCountinSongsPage))
+		{
+			System.out.println("Pass\n");		
+		}		
+		
+		
+	}
 
 }
 		

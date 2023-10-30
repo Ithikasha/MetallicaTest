@@ -42,6 +42,40 @@ public class SiteMonitoringConstantData {
 	
 	public static String FailedPastTourDateLists = "Section - ";
 	
+	public static String SeventyTwoSeasonsName;
+	
+	public static String SeventyTwoSeasonsCount;
+	
+	public static String SeventyTwoSeasonsCountinSongsPage;
+	
+	public static String AintMyBitchName;
+	
+	public static String AintMyBitchCount;
+	
+	public static String AintMyBitchCountinSongsPage;
+	
+	public static String AllWithinMyHandsName;
+	
+	public static String AllWithinMyHandsCount;
+	
+	public static String AllWithinMyHandsCountinSongsPage;
+	
+	public static String EnterSandmanName;
+	
+	public static String EnterSandmanCount;
+	
+	public static String EnterSandmanCountinSongsPage;
+	
+	public static String IfDarknessHadASonName;
+	
+	public static String IfDarknessHadASonCount;
+	
+	public static String IfDarknessHadASonCountinSongsPage;
+	
+	public static String FailedSongs = "Songs: ";
+	
+	
+	
 //	public static String ServiceCloud_input_sheetname = "input";
 	
 }

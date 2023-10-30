@@ -53,7 +53,7 @@ public class constantData {
 	
 	public String DevTomspassword ="Ithikash@toms07jan";
 	
-	public String STG_url = "https://ithikasha@unitedtechno.com:Ithi@sfcc07feb@staging.rockdevelop.com/";
+	public String STG_url = "https://ithikasha@unitedtechno.com:Ithi@sfcc07aug@staging.rockdevelop.com/";
 	
 	public String DEV03_url = "https://dev03-na01-metallica.demandware.net/s/Metallica/home/";
 	
@@ -107,13 +107,13 @@ public class constantData {
 	
 	public static String ReturnOrderNumber = "01256523";
 	
-	public String Visa_number ="4111111111111111";
+	public String Visa_number = "4012888888881881";
 	
 	public String Visa_date = "08";
 	
 	public String Visa_month = "12";
 	
-	public String Visa_year = "2022";
+	public String Visa_year = "2027";
 	
 	public String Visa_cvv = "737";
 	
@@ -123,7 +123,7 @@ public class constantData {
 	
 	public String Amex_month = "12";
 	
-	public String Amex_year = "2023";
+	public String Amex_year = "2024";
 	
 	public String Amex_cvv = "7373";
 	

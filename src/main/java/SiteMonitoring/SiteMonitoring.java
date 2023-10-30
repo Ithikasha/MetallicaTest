@@ -19,6 +19,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
 
+import com.itextpdf.text.log.SysoLogger;
+
 import Data_Functions.*;
 import Email.SendingEmail;
 import Regression.ContactUsForm;
@@ -101,6 +103,8 @@ public class SiteMonitoring {
 		Amplience();
 		
 		Algolia();
+		
+		AlgoliaSongs();
 				
 		data.driver.close();
 		
@@ -810,7 +814,7 @@ public class SiteMonitoring {
 			
 			SiteData.result = true;
 			
-			functions.write_SiteMonitoring(SiteData.result, 13);	
+			functions.write_SiteMonitoring(SiteData.result, 12);	
 		}
 		else
 		{
@@ -819,7 +823,7 @@ public class SiteMonitoring {
 			
 			SiteData.result = false;
 			
-			functions.write_SiteMonitoring(SiteData.result, 13);
+			functions.write_SiteMonitoring(SiteData.result, 12);
 						
 		}
 		
@@ -3322,6 +3326,217 @@ public class SiteMonitoring {
 	
 						
 }
+			
+			public static void AlgoliaSongs() throws InterruptedException, IOException
+			{
+				
+				int fail = 0;
+				
+//				String Songs = "13";
+				
+				data.driver.get(data.Prod_url);
+				
+				util.Click(elements.srch);
+				
+				util.Click(elements.SongsandLyricsLink);
+				
+				util.waitForElementToLoad(elements.SongPageTitle);
+				
+				util.Click(elements.ChangeViewIcon);
+				
+				int SongLists = elements.SongsList.size();
+				
+				System.out.println(SongLists);
+				
+				SiteData.SeventyTwoSeasonsName = elements.SeventyTwoSeasonsName.getText().toString();
+				
+				SiteData.SeventyTwoSeasonsCount = elements.SeventyTwoSeasonsCount.getText().toString();
+				
+				System.out.println("Count for 72 Seasons in Songs List page = " + SiteData.SeventyTwoSeasonsCount);
+				
+	//			System.out.println(SiteData.SeventyTwoSeasonsName+" = "+ SiteData.SeventyTwoSeasonsCount);
+				
+				util.Click(elements.SeventyTwoSeasonsName);
+				
+				util.waitForElementToLoad(elements.CountInSongsDetailPage);
+				
+				SiteData.SeventyTwoSeasonsCountinSongsPage = elements.CountInSongsDetailPage.getText().toString();
+				
+				System.out.println("Count for 72 Seasons in Song Detail page = " +SiteData.SeventyTwoSeasonsCountinSongsPage);
+				
+	//			System.out.println(SiteData.SeventyTwoSeasonsName+" = "+SiteData.SeventyTwoSeasonsCountinSongsPage);
+				
+				data.driver.navigate().back();
+				
+				if(SiteData.SeventyTwoSeasonsCount.equals(SiteData.SeventyTwoSeasonsCountinSongsPage))
+				{
+					System.out.println("72 Seasons Count validation Successful\n");	
+					
+				}
+				
+				else
+				{
+					
+					System.out.println("72 Seasons Count validation UnSuccessful\n");	
+					SiteData.FailedSongs = SiteData.FailedSongs.concat("72 Seasons" + "  " + SiteData.SeventyTwoSeasonsCount + "   " + SiteData.SeventyTwoSeasonsCountinSongsPage + "\n"); 
+					fail++;
+									
+				}
+							
+				SiteData.AintMyBitchName = elements.AintMyBitchName.getText().toString();
+				
+				SiteData.AintMyBitchCount = elements.AintMyBitchCount.getText().toString();
+				
+				System.out.println("Count for Ain't My Bitch in Songs List page = "+ SiteData.AintMyBitchCount);
+				
+//				System.out.println(SiteData.AintMyBitchName+" = "+ SiteData.AintMyBitchCount);
+				
+				util.Click(elements.AintMyBitchName);
+				
+				util.waitForElementToLoad(elements.CountInSongsDetailPage);
+				
+				SiteData.AintMyBitchCountinSongsPage = elements.CountInSongsDetailPage.getText().toString();
+				
+				System.out.println("Count for Ain't My Bitch in Song Detail page = " +SiteData.AintMyBitchCountinSongsPage);
+				
+//				System.out.println(SiteData.AintMyBitchName+" = "+SiteData.AintMyBitchCountinSongsPage);
+				
+				data.driver.navigate().back();
+				
+				if(SiteData.AintMyBitchCount.equals(SiteData.AintMyBitchCountinSongsPage))
+				{
+					System.out.println("Ain't My Bitch Count validation Successful\n");
+				}
+							
+				else {
+					
+					System.out.println("Ain't My Bitch Count validation UnSuccessful\n");	
+					SiteData.FailedSongs = SiteData.FailedSongs.concat("Ain't My Bitch" + SiteData.AintMyBitchCount + SiteData.AintMyBitchCountinSongsPage ); 
+					fail++;
+				
+				}
+				
+				SiteData.AllWithinMyHandsName = elements.AllWithinMyHandsName.getText().toString();
+				
+				SiteData.AllWithinMyHandsCount = elements.AllWithinMyHandsCount.getText().toString();
+				
+				System.out.println("Count for All Within My Hands in Songs List page = "+ SiteData.AllWithinMyHandsCount);
+				
+//				System.out.println(SiteData.AllWithinMyHandsName+" = "+ SiteData.AllWithinMyHandsCount);
+				
+				util.Click(elements.AllWithinMyHandsName);
+				
+				util.waitForElementToLoad(elements.CountInSongsDetailPage);
+				
+				SiteData.AllWithinMyHandsCountinSongsPage = elements.CountInSongsDetailPage.getText().toString();
+				
+				System.out.println("Count for All Within MyHands in Song Detail page  = "+SiteData.AllWithinMyHandsCountinSongsPage);
+				
+//				System.out.println(SiteData.AllWithinMyHandsName+" = "+SiteData.AllWithinMyHandsCountinSongsPage);
+				
+				data.driver.navigate().back();
+				
+				if(SiteData.AllWithinMyHandsCount.equals(SiteData.AllWithinMyHandsCountinSongsPage))
+				{
+					System.out.println("All Within My Hands Count validation Successful\n");		
+				}
+				
+				else
+				{
+					System.out.println("All Within My Hands Count validation UnSuccessful\n");	
+					SiteData.FailedSongs = SiteData.FailedSongs.concat("All Within My Hands" +  "  " +  SiteData.AllWithinMyHandsCount + "   " + SiteData.AllWithinMyHandsCountinSongsPage); 					
+				fail++;
+				
+				}
+				
+				
+				SiteData.EnterSandmanName = elements.EnterSandmanName.getText().toString();
+				
+				SiteData.EnterSandmanCount = elements.EnterSandmanCount.getText().toString();
+				
+				System.out.println("Count for Enter Sandman in Songs List page = "+ SiteData.EnterSandmanCount);
+				
+//				System.out.println(SiteData.EnterSandmanName+" = "+ SiteData.EnterSandmanCount);
+				
+				util.Click(elements.EnterSandmanName);
+				
+				util.waitForElementToLoad(elements.CountInSongsDetailPage);
+				
+				SiteData.EnterSandmanCountinSongsPage = elements.CountInSongsDetailPage.getText().toString();
+				
+				System.out.println("Count for Enter Sandman in Song Detail page = "+SiteData.EnterSandmanCountinSongsPage);
+				
+//				System.out.println(SiteData.EnterSandmanName+" = "+SiteData.EnterSandmanCountinSongsPage);
+				
+				data.driver.navigate().back();
+				
+				if(SiteData.EnterSandmanCount.equals(SiteData.EnterSandmanCountinSongsPage))
+				{
+					System.out.println("Enter Sandman Count validation Successful\n");		
+				}	
+				else
+				{
+					System.out.println("Enter Sandman Count validation UnSuccessful\n");	
+					SiteData.FailedSongs = SiteData.FailedSongs.concat("Enter Sandman" + SiteData.EnterSandmanCount + SiteData.EnterSandmanCountinSongsPage); 						
+					fail++;
+				
+				}
+				
+				SiteData.IfDarknessHadASonName = elements.IfDarknessHadASonName.getText().toString();
+				
+				SiteData.IfDarknessHadASonCount = elements.IfDarknessHadASonCount.getText().toString();
+				
+				System.out.println("Count for If Darkness Had A Son Name in Songs List page = "+ SiteData.IfDarknessHadASonCount);
+				
+//				System.out.println(SiteData.IfDarknessHadASonName+" = "+ SiteData.IfDarknessHadASonCount);
+				
+				util.Click(elements.IfDarknessHadASonName);
+				
+				util.waitForElementToLoad(elements.CountInSongsDetailPage);
+				
+				SiteData.IfDarknessHadASonCountinSongsPage = elements.CountInSongsDetailPage.getText().toString();
+				
+				System.out.println("Count for If Darkness Had A Son in Song Detail page  = "+SiteData.IfDarknessHadASonCountinSongsPage);
+				
+	//			System.out.println(SiteData.IfDarknessHadASonName+" = "+SiteData.IfDarknessHadASonCountinSongsPage);
+				
+				data.driver.navigate().back();
+				
+				if(SiteData.IfDarknessHadASonCount.equals(SiteData.IfDarknessHadASonCountinSongsPage))
+				{
+					System.out.println("If Darkness Had A Son Count validation Successful\n");		
+				}		
+				
+				else
+				{
+					
+					System.out.println("If Darkness Had A Son Count validation UnSuccessful\n");	
+					SiteData.FailedSongs = SiteData.FailedSongs.concat("Enter Sandman" + SiteData.IfDarknessHadASonCount + SiteData.IfDarknessHadASonCountinSongsPage); 			
+					fail++;
+				
+				}
+				
+				
+				if(fail>0)
+				{
+					
+					System.out.println("\t\t\t"+"Songs Count validation Unsuccessful");
+					functions.AlgoliaSongs(false, 20);
+				}
+				
+				else
+				
+				{
+					
+					System.out.println("Songs Count validation Successful");
+					functions.AlgoliaSongs(true, 20);
+				}
+				
+			}
+
+			
+			
+			
 }
 		
 		

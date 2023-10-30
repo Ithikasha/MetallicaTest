@@ -454,7 +454,10 @@ public class Functions {
    
    public boolean placeOrder(String orderType) throws InterruptedException
    {
-//	   if(element_obj.Error_form.isDisplayed())
+	   
+//	   Thread.sleep(2000);
+	   
+	   //	   if(element_obj.Error_form.isDisplayed())
 //			
 //		{
 //			System.out.println(element_obj.Error_form.getText());
@@ -1036,6 +1039,10 @@ public void Logout() throws InterruptedException {
 		util.Clear(element_obj.zipcode);
 		
 		util.Sendkeys(element_obj.zipcode,element_obj.Zip_Code);
+		
+		Select countryUS = new Select(element_obj.countryField);
+		countryUS.selectByVisibleText("United States");
+	
 
 		if(orderType.equalsIgnoreCase("Domestic"))
 		{
@@ -1210,6 +1217,9 @@ public void Logout() throws InterruptedException {
 		{
 
 		case "Visa":
+			
+//			Select Visa = new Select(element_obj.cardlist);
+//			Visa.selectByVisibleText("(Visa) ************1881 - Expiration 01.2039");
 
 			
 			util.Sendkeys(element_obj.cardnumber, data_obj.Visa_number);
@@ -1217,13 +1227,17 @@ public void Logout() throws InterruptedException {
 			Select card_month = new Select(element_obj.cardmonth);
 			
 			card_month.selectByValue(data_obj.Visa_month);
+			
+			Select card_year = new Select(element_obj.cardyear);
+			
+			card_year.selectByValue(data_obj.Visa_year);
 
-			element_obj.cardyear.sendKeys(data_obj.Visa_year);
+//			element_obj.cardyear.sendKeys(data_obj.Visa_year);
 
 			element_obj.cardcvn.sendKeys(data_obj.Visa_cvv);
 			
 			element_obj.cardname.sendKeys(data_obj.firstname);
-//			
+			
 //			if(element_obj.Error_message.isDisplayed())
 //			{
 //				System.out.println(element_obj.Error_message.toString());
@@ -1307,6 +1321,8 @@ public void Logout() throws InterruptedException {
 			System.out.println("Give a Valid Payment Method");
 			break;
 		}
+		
+//		Thread.sleep(2000);
 		
 		element_obj.continuePlaceorder.click();
 
@@ -2610,9 +2626,7 @@ public void Logout() throws InterruptedException {
 				{
 					
 					SiteData.FailedMandatoryField = SiteData.FailedMandatoryField.substring(0,SiteData.FailedMandatoryField.length() -1);
-					
-					
-					
+			
 					result_cell.setCellValue(" Failed Mandatory Fields: "+SiteData.FailedMandatoryField);
 				}
 					
@@ -2770,9 +2784,68 @@ public void Amplience(boolean result,int number) throws IOException
 	book.write(outputstream);
 		    
 	outputstream.close();
-
-
 }
+
+
+public void AlgoliaSongs(boolean result,int number) throws IOException
+{
+
+	File file = new File(SiteData.filePath+"\\"+SiteData.Result_fileName);
+
+	FileInputStream istream = new FileInputStream(file);
+
+	Workbook book = fileSetup(istream,SiteData.Result_fileName);
+
+	Sheet sheet = book.getSheet(SiteData.Result_sheetName);
+
+	Row row = sheet.getRow(number);
+	
+	String value ;
+
+
+	if(result)
+	{
+		value = "PASS";
+	}
+	
+	else
+	{
+			value = "FAIL";
+			
+			if(number == 20) 
+			
+			{
+		
+			Cell result_cell = row.createCell(5);
+			
+			result_cell.setCellType(result_cell.CELL_TYPE_STRING);
+				
+			SiteData.FailedSongs = SiteData.FailedSongs.substring(0,SiteData.FailedSongs.length() );
+				
+			result_cell.setCellValue(SiteData.FailedSongs);
+			
+		}
+	}
+		
+	
+	Cell result_cell = row.createCell(4);
+	
+	result_cell.setCellType(result_cell.CELL_TYPE_STRING);
+
+	result_cell.setCellValue(value);
+			
+	istream.close(); 
+	 	    
+	FileOutputStream outputstream = new FileOutputStream(SiteMonitoring.SiteMonitoringConstantData.filePath+"\\"+SiteMonitoring.SiteMonitoringConstantData.Result_fileName);
+	
+	book.write(outputstream);
+		    
+	outputstream.close();
+	
+}
+		
+
+
 			
 	
 	public void InventoryCheck() throws Exception

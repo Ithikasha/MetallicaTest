@@ -28,7 +28,7 @@ public class placeOrder {
 			
 			Functions functions = new Functions(data,elements);
 			
-			data.driver.get(data.DEV_url);
+			data.driver.get(data.STG_url);
 			
 			
 //			data.driver.findElement(By.xpath("//button[@id='details-button']")).click();
@@ -53,7 +53,7 @@ public class placeOrder {
 //			
 //			functions.bulkOrder_testing("Regression");
 			
-			functions.bulkOrder_testing("Excelsheets","Bulk Order.xls","06072022",27,"Regression");
+			functions.bulkOrder_testing("Excelsheets","Bulk Order.xls","06072022",15,"Regression");
 
 //			functions.bulkOrder_International("Regression");
 			

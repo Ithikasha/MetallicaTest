@@ -92,12 +92,13 @@ public static driverUtil util = new driverUtil();
 			
 //			hp.GiftCertificate_Validation();
 			
-			hp.Hostek();
+//			hp.Hostek();
 			
 //			hp.Amplience();
 			
 //			hp.Algolia();
-		
-}
-	
+			
+			hp.AlgoliaSongs();	
+			
+}	
 }
