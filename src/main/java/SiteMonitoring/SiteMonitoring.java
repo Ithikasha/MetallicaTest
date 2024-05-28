@@ -1,8 +1,9 @@
 package SiteMonitoring;
 
 import java.io.File;
-
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.PrintStream;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -16,6 +17,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
 
@@ -50,6 +52,7 @@ public class SiteMonitoring {
 	
 	{
 		
+		
 		data.driver = util.chrome();
 	    
 	    elements = new pageElements(data.driver);
@@ -68,6 +71,24 @@ public class SiteMonitoring {
 		
 //		util.Click(elements.no);
 		
+//		File file = new File("C:\\Users\\UTIS LAPTOP 38\\Desktop\\Dev_Output"); 
+//		
+//		FileOutputStream fos = new FileOutputStream(file);
+//		
+//		PrintStream ps = new PrintStream(fos);
+//		
+//		System.setOut(ps);
+//		
+//		System.setErr(ps);
+		
+//		PrintStream o = new PrintStream(new File("C:\\Users\\UTIS LAPTOP 38\\Desktop\\Dev_Output.txt"));
+//		PrintStream console = System.out;
+//		System.setOut(o);
+//		System.setOut(console);
+		
+		
+		System.out.println("Site Monitoring");
+		
 		data.driver.get(data.Prod_url);
 		
 		functions.PRD_login();
@@ -85,7 +106,7 @@ public class SiteMonitoring {
 //		PayPal();
 		
 //		Cloudinary();
-		
+	
 		KnightLab();
 		
 		DigitalOcean();
@@ -105,8 +126,20 @@ public class SiteMonitoring {
 		Algolia();
 		
 		AlgoliaSongs();
-				
+			
 		data.driver.close();
+		
+//		File file = new File("C:\\Users\\UTIS LAPTOP 38\\Desktop\\Dev_Output"); 
+//		
+//		FileOutputStream fos = new FileOutputStream(file);
+//		
+//		PrintStream ps = new PrintStream(fos);
+//		
+//		System.setOut(ps);
+//		
+//		System.setErr(ps);
+		
+//		functions.ConsoleToFile();
 		
 	}
 	
@@ -129,11 +162,11 @@ public class SiteMonitoring {
 		
 	}
 	
-	public static void ShipperHQ_Instock() throws Exception
+	public static void  ShipperHQ_Instock() throws Exception
 	
 	{
 			
-		functions.Add_product("BUFFALO 2022 TOUR T-SHIRT - MEDIUM");
+		functions.Add_product("KHPOUIJAT-S");
 		
 		util.Click(elements.checkout);
 		
@@ -178,7 +211,7 @@ public class SiteMonitoring {
 	
 	public static void ShipperHQ_Preorder() throws Exception  
 	{
-		functions.Add_Preorder("Messengers: The Guitars of James Hetfield by James Hetfield (Hardcover Book)");
+		functions.Add_Preorder("LIVE METALLICA MUNICH GERMANY - MAY 26 2024 (2CD)");
 		
 		util.Click(elements.checkout);
 		
@@ -249,7 +282,7 @@ public class SiteMonitoring {
 	public static void Avalara() throws Exception
 	{
 		
-		functions.Add_product("BUFFALO 2022 TOUR T-SHIRT - MEDIUM");
+	 	functions.Add_product("KHPOUIJAT-S");
 		
 //		System.out.println("\tAvalara_TaxableDomestic Testing");
 		
@@ -267,7 +300,7 @@ public class SiteMonitoring {
 		
 		Avalara_NonTaxableInternational();
 		
-	}
+    }
 	
 	public static void Avalara_TaxableDomestic() throws Exception
 	{
@@ -276,21 +309,21 @@ public class SiteMonitoring {
 
 		util.Clear(elements.address1);
 		
-		util.Sendkeys(elements.address1,"5411 3rd St");
+		util.Sendkeys(elements.address1,"201 S Walton Blvd");
 
 		util.Clear(elements.city);
 		
-		util.Sendkeys(elements.city,"San Francisco");
+		util.Sendkeys(elements.city,"Bentonville");
 		
 		Select country = new Select(elements.countryField);
 		country.selectByVisibleText("United States");
 
 		util.Clear(elements.zipcode);
 		
-		util.Sendkeys(elements.zipcode,"94124-2605");
+		util.Sendkeys(elements.zipcode,"72712-5701");
 		
 		Select state = new Select(elements.stateField);
-		state.selectByVisibleText("California");
+		state.selectByVisibleText("Arkansas");
 		
 		util.Clear(elements.phone);
 		
@@ -534,7 +567,7 @@ public class SiteMonitoring {
 		
 		System.out.println("\tUPS Testing");
 		
-		functions.Add_product("BUFFALO 2022 TOUR T-SHIRT - MEDIUM");
+		functions.Add_product("KHPOUIJAT-S");
 		
 		util.Click(elements.checkout);
 
@@ -873,7 +906,7 @@ public class SiteMonitoring {
 	   
 	}
 	
-	public static void Discourse() throws Exception
+	static public  void Discourse() throws Exception
 	{
 
 		data.driver.get(data.Discourse_Url);
@@ -963,7 +996,8 @@ public class SiteMonitoring {
 			}
 			
 			else
-			{
+			{	
+				Thread.sleep(2000);
 				util.jClick(data.driver,elements.addcart);
 			}
 		  
@@ -1028,7 +1062,7 @@ public class SiteMonitoring {
 		
 		Others();
 		
-//		Mandatoryfields();
+		Mandatoryfields();
 		
 		
 	}
@@ -3038,7 +3072,22 @@ public class SiteMonitoring {
 			
 			System.out.println(ContestLists);
 			
+			
 			int fail = 0;
+			
+			if(util.Isdisplayed(elements.ContestPageError)) {
+				
+				System.out.println("Error Occurs");
+				
+				System.out.println("\t\t\t"+"Contest Lists validation Unsuccessful");
+				
+				functions.Hostek(false, 16);
+				
+			}
+			
+			
+			else {	
+			
 				
 			for(int i=1; i<=ContestLists; i++)
 				
@@ -3112,8 +3161,9 @@ public class SiteMonitoring {
 				
 			
 			}
-			
-		}
+			}
+			}
+		
 
 
 			

@@ -41,6 +41,7 @@ import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -116,10 +117,13 @@ public class driverUtil {
 	public WebDriver chrome()
 	{
 //		System.setProperty("webdriver.chrome.driver","C:\\Users\\UNITS\\Documents\\BitBucket\\chromedriver_win32\\chromedriver.exe");
-		System.setProperty("webdriver.chrome.driver","C:\\Users\\UTIS LAPTOP 38\\Downloads\\chromedriver-win32 (1)\\chromedriver-win32\\chromedriver.exe");
-//		System.setProperty("webdriver.chrome.driver","C:\\METALLICA\\Chromedriver\\chromedriver.exe");
+		System.setProperty("webdriver.chrome.driver","D:\\ChromeDrivers\\chromedriver-win32\\chromedriver.exe");
+//		System.setProperty("webdriver.chrome.driver","C:\\METALLICA\\chromedriver\\chromedriver.exe");
 		
 //		System.setProperty("webdriver.chrome.driver","Chromedriver\\chromedriver.exe");
+//		ChromeOptions options = new ChromeOptions();
+//		
+//		options.setHeadless(true);
 		WebDriver driver = new ChromeDriver();
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		return driver;

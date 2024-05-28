@@ -217,7 +217,7 @@ public class Homepage {
 					
 					util.Click(element_obj.HelpLink);
 					
-					if(util.Isdisplayed(element_obj.driver.findElement(By.xpath("//a[contains(text(),'Join Us Today')]"))))
+					if(util.Isdisplayed(element_obj.driver.findElement(By.xpath("//a[contains(text(),'Sign Up Today')]"))))
 					{
 						System.out.println("\t\t\t"+"Help Link verification Successful");
 						
@@ -247,7 +247,7 @@ public class Homepage {
 	
 				   util.Click(element_obj.ReturnLink);
 	
-				   if(util.Isdisplayed(element_obj.driver.findElement(By.xpath("//a[contains(text(),'Join Us Today')]"))))
+				   if(util.Isdisplayed(element_obj.driver.findElement(By.xpath("//a[contains(text(),'Sign Up Today')]"))))
 				   {
 					   System.out.println("\t\t\t"+"Return Link verification Successful");
 		
@@ -305,7 +305,7 @@ public class Homepage {
 					
 					util.Click(element_obj.TermsOfUseLink);
 					
-					if(util.Isdisplayed(element_obj.driver.findElement(By.xpath("//a[contains(text(),'Join Us Today')]"))))
+					if(util.Isdisplayed(element_obj.driver.findElement(By.xpath("//a[contains(text(),'Sign Up Today')]"))))
 					{
 						System.out.println("\t\t\t"+"Terms Of Use Link verification Successful");
 						
@@ -332,7 +332,7 @@ public class Homepage {
 					
 					util.Click(element_obj.PrivacyPolicyLink);
 					
-					if(util.Isdisplayed(element_obj.driver.findElement(By.xpath("//a[contains(text(),'Join Us Today')]"))))
+					if(util.Isdisplayed(element_obj.driver.findElement(By.xpath("//a[contains(text(),'Sign Up Today')]"))))
 					{
 						System.out.println("\t\t\t"+"Privacy Policy Link verification Successful");
 						
@@ -1363,7 +1363,7 @@ public void Amplience() throws Exception
 		
 		}
 		
-		public void EnterSandman() throws InterruptedException
+		public void  EnterSandman() throws InterruptedException
 		{
 		
 		SiteData.EnterSandmanName = element_obj.EnterSandmanName.getText().toString();

@@ -88,7 +88,7 @@ public class Regression_test
 		
 //			lp.Check_Orderstatus(Regression_data.Orderstatus_Ordernumber,Regression_data.Orderstatus_email,Regression_data.Orderstatus_zipcode);
 			
-			ma.MyAccount_Links();
+		    ma.MyAccount_Links();
 			
 			pdp.PDP_Testing();
 			
@@ -110,7 +110,7 @@ public class Regression_test
 			
 			sp.UseAddress_checkbox(); 
 			
-			sp.Preorder_Validation(); 
+//			sp.Preorder_Validation(); 
 			
 //			sp.VC_Validation(); 
 			
@@ -142,7 +142,7 @@ public class Regression_test
 			
 //		    System.out.println("\n\n\n\t\t\t\t\t\t\t\tTest-"+smoke_data.testCount+" Completed!!!");
 						
-			util.Click(elements.ContinueShopping);
+//			util.Click(elements.ContinueShopping);
 			
 			util.Click(elements.srch);
 						

@@ -53,9 +53,9 @@ public class placeOrder {
 //			
 //			functions.bulkOrder_testing("Regression");
 			
-			functions.bulkOrder_testing("Excelsheets","Bulk Order.xls","06072022",15,"Regression");
+//			functions.bulkOrder_testing("Excelsheets","Bulk Order.xls","RegressionOrders",16,"Regression");
 
-//			functions.bulkOrder_International("Regression");
+			functions.BulkOrder_International("Excelsheets","Bulk Order.xls","RegressionInternational",11,"Regression");
 			
 			data.driver.close();	
 			

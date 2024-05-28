@@ -478,10 +478,10 @@ public class pageElements {
 	@FindBy(xpath="//label[contains(@for,'saveCard')]") 
 	public WebElement savecard;
 	
-	@FindBy(xpath="//dd[@class='order-subtotal-value']") 
+	@FindBy(xpath="//dd[@class='order-subtotal-value js-miniCartSubtotals']") 
 	public WebElement BP_subtotal;
 	
-	@FindBy(xpath="//dd[@class='order-value order-total-value']") 
+	@FindBy(xpath="//dd[@class='order-value order-total-value js-estimatedTotalUpdated']") 
 	public WebElement BP_total;
 	
 	@FindBy(xpath="//dd[@class='order-sales-tax-value js-taxUpdated']") 
@@ -547,13 +547,13 @@ public class pageElements {
 	@FindBy(xpath="(//span[@class='label label--desktop'])[1]")
 	public WebElement POviewcart;
 	
-	@FindBy(xpath="(//dd[@class='order-subtotal-value'])[2]") 
+	@FindBy(xpath="(//dd[@class='order-subtotal-value js-miniCartSubtotals'])[2]") 
 	public WebElement POP_subtotal;
 	
-	@FindBy(xpath="(//dd[@class='order-value order-total-value'])[2]") 
+	@FindBy(xpath="(//dd[@class='order-value order-total-value js-estimatedTotalUpdated'])[2]") 
 	public WebElement POP_total;
 	
-	@FindBy(xpath="(//dd[@class='order-sales-tax-value'])[2]") 
+	@FindBy(xpath="(//dd[@class='order-sales-tax-value js-taxUpdated'])[2]") 
 	public WebElement POP_tax;
 	
 	//Order Confirmation page
@@ -1062,6 +1062,8 @@ public class pageElements {
 	@FindBy(xpath="//div[@class='show contest']//following::h4")
 	public WebElement ContestsName;
 	
+	@FindBy(xpath="//div[@id='primary']//h1")
+	public WebElement ContestPageError;
 	
 //Amplience(Content)
 

@@ -30,7 +30,7 @@ public class SiteMonitoringConstantData {
 	
 	public static String PayPal;
 	
-	public static String ServiceCloud_Result_filename = "Regression_Results.xls";
+	public static String ServiceCloud_Result_filename = "SiteMonitoring.xls";
 	
 	public static String ServiceCloud_filepath = "Excelsheets";
 	

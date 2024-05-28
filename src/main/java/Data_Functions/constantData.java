@@ -53,7 +53,7 @@ public class constantData {
 	
 	public String DevTomspassword ="Ithikash@toms07jan";
 	
-	public String STG_url = "https://ithikasha@unitedtechno.com:Ithi@sfcc07aug@staging.rockdevelop.com/";
+	public String STG_url = "https://ithikasha@unitedtechno.com:Ithi@sfccfeb2024@staging.rockdevelop.com/";
 	
 	public String DEV03_url = "https://dev03-na01-metallica.demandware.net/s/Metallica/home/";
 	
@@ -67,7 +67,7 @@ public class constantData {
 	
 	public String fileName = "Bulk Order.xls";
 
-	public String sheetName = "International03012022";
+	public String sheetName = "RegressionInternational";
 	
 	public int totalOrder = 30;
 	

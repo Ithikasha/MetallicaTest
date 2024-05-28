@@ -5,6 +5,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.PrintStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.sql.Array;
@@ -14,6 +15,7 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
+import java.util.Scanner;
 import java.util.Collections;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Cell;
@@ -59,7 +61,49 @@ public class Functions {
 //	   SiteData=site;
    }
    
-   public void RegressionOrdersDomestic(String type) throws Exception
+   public void ConsoleToFile()
+   
+   
+   {
+
+	        // Capture console data
+	        
+
+	        // Redirect console output to a file
+	        try {
+	        	Scanner scanner = new Scanner(System.in);
+		        System.out.println("Enter data to be stored in the file: ");
+		        String consoleData = scanner.nextLine();
+	            File file = new File("SiteMonitoringResults.txt");
+	            FileOutputStream fos = new FileOutputStream(file);
+	            PrintStream ps = new PrintStream(fos);
+
+	            // Save the current System.out before redirecting
+	            PrintStream originalOut = System.out;
+
+	            // Redirect System.out to the file
+	            System.setOut(ps);
+
+	            // Write console data to the file
+	            System.out.println("Console Data: " + consoleData);
+
+	            // Restore the original System.out
+	            System.setOut(originalOut);
+
+	            System.out.println("Console data has been saved to the file: " + file.getAbsolutePath());
+
+	            // Close the streams
+	            fos.close();
+	            ps.close();
+	        } catch (Exception e) 
+	        {
+	            e.printStackTrace();
+	        }
+	    }
+	 
+   
+   
+   public void RegressionOrdersDomestic(String filePath, String fileName, String sheetName, int totalOrders, String type) throws Exception
    {
 	   
 	    DataFormatter formatter = new DataFormatter();
@@ -77,7 +121,7 @@ public class Functions {
 			login();
 		}
 
-		for (data_obj.orderCount = 1; data_obj.orderCount < data_obj.totalOrder; data_obj.orderCount++) {
+		for (data_obj.orderCount = 11; data_obj.orderCount < data_obj.totalOrder; data_obj.orderCount++) {
 
 			data_obj.flag = true;
 			
@@ -114,10 +158,14 @@ public class Functions {
 			 
 			}
 			
+			else
+			{
+			
 			if(data_obj.flag==false)
 			{
 				continue;
 			}
+						
 
 			data_obj.flag = shipping("Domestic") ;
 			
@@ -144,7 +192,7 @@ public class Functions {
 		}
 	   
 	   
-	   
+		}   
 	   
 	   
 	   
@@ -171,8 +219,6 @@ public class Functions {
 			System.out.println(data_obj.orderTotal);
 			
 			WriteDigitalOrderDetail(data_obj.orderCount, data_obj.orderNumber, data_obj.salesTax, data_obj.orderTotal, data_obj.shippinging_cost,data_obj.subTotal);
-		   
-		   
 		   
 	   
    }
@@ -253,6 +299,9 @@ public class Functions {
 			}		
 		}
 		
+		
+		element_obj.continuePlaceorder.click();
+		
 	      }
    
    
@@ -297,7 +346,7 @@ public class Functions {
 			login();
 		}
  
-		for (data_obj.orderCount = 1; data_obj.orderCount < data_obj.totalOrder; data_obj.orderCount++) {
+		for (data_obj.orderCount = 10; data_obj.orderCount < data_obj.totalOrder; data_obj.orderCount++) {
 
 			data_obj.flag = true;
 			
@@ -334,10 +383,14 @@ public class Functions {
 			 
 			}
 			
+			else
+			{
+			
 			if(data_obj.flag==false)
 			{
 				continue;
 			}
+						
 
 			data_obj.flag = shipping("Domestic") ;
 			
@@ -365,7 +418,7 @@ public class Functions {
 		
 		Logout();
 		
-   }
+   }}
    
    public void bulkOrder_testing(String filePath, String fileName, String sheetName, int totalOrders, String type) throws Exception  
    {
@@ -385,7 +438,8 @@ public class Functions {
 			login();
 		}
  
-		for (data_obj.orderCount = 1; data_obj.orderCount < totalOrders; data_obj.orderCount++) {
+		for (data_obj.orderCount = 7; data_obj.orderCount < totalOrders; data_obj.orderCount++) 
+		{
 
 			data_obj.flag = true;
 			
@@ -413,20 +467,38 @@ public class Functions {
 
 //			System.out.println("Variable data_obj are Collected");
 			
-			
-
 			data_obj.flag = selectItems();
 			
+			try
+			{
+				
+			 System.out.println("Entering try");
+			
+			if(util.Isdisplayed(element_obj.driver.findElement(By.xpath("//div[@class='billing-header']"))))
+			{
+				
+			  DigitalPayment() ;	
+				
+			  DigitalAddress("Domestic");
+			 
+			}
+			}
+			
+			
+			catch(Exception ex)
+			{
+			
+				 System.out.println("Entering Catch");
+				 
 			if(data_obj.flag==false)
 			{
 				continue;
 			}
-			
-			
+						
+
 			data_obj.flag = shipping("Domestic") ;
 			
-		    if(data_obj.flag==false)
-				
+			if(data_obj.flag==false)
 			{
 				continue;
 			}
@@ -438,6 +510,8 @@ public class Functions {
 				continue;
 			}
 			
+			}
+		
 			data_obj.flag = placeOrder("Domestic") ;
 			
 			if(data_obj.flag==false)
@@ -445,12 +519,14 @@ public class Functions {
 				continue;
 			}
 
-			orderConfirmation(filePath,fileName,sheetName);
+			OrderConfirmationfinal();
 		}
 		
-		Logout();
+//		Logout();
 		
+ 
    }
+   
    
    public boolean placeOrder(String orderType) throws InterruptedException
    {
@@ -463,7 +539,7 @@ public class Functions {
 //			System.out.println(element_obj.Error_form.getText());
 //			return false;
 //		}
-	   
+//	   
 //	   if(orderType.equalsIgnoreCase("Domestic"))
 //		{
 //			element_obj.placeorder.click();
@@ -475,7 +551,7 @@ public class Functions {
 //			
 //			Thread.sleep(3000);
 //			
-//			util.jClick(element_obj.shpInt);
+////			util.Click(element_obj.shpInt);
 //			
 //			
 //			element_obj.shpInt.click();
@@ -483,6 +559,7 @@ public class Functions {
 //			element_obj.placeorder.click();
 //			return true;
 //		}
+	   
 	   if(util.Isdisplayed(element_obj.shpInt))
 	   {
 		   Thread.sleep(3000);
@@ -567,7 +644,7 @@ public class Functions {
 		Logout();
    }
 
-   public void bulkOrder_International(String filePath, String fileName, String sheetName, int totalOrders, String type) throws Exception
+   public void BulkOrder_International(String filePath, String fileName, String sheetName, int totalOrders, String type) throws Exception
    {
 	   DataFormatter formatter = new DataFormatter();
 
@@ -600,33 +677,71 @@ public class Functions {
 
 			element_obj.Zip_Code = formatter.formatCellValue(row.getCell(6));
 			
-			element_obj.State = formatter.formatCellValue(row.getCell(16));
+			element_obj.State = formatter.formatCellValue(row.getCell(8));
 		
 			element_obj.Country = formatter.formatCellValue(row.getCell(7));
 			
-			element_obj.Shipping_Method = formatter.formatCellValue(row.getCell(8));
+//			element_obj.Shipping_Method = formatter.formatCellValue(row.getCell(8));
 
 			element_obj.Payment_Method = formatter.formatCellValue(row.getCell(9));
 
 			data_obj.flag = selectItems();
 		
-			if(!data_obj.flag)
+			try
 			{
-				element_obj.remove.click();
+				
+			 System.out.println("Entering try");
+			
+			if(util.Isdisplayed(element_obj.driver.findElement(By.xpath("//div[@class='billing-header']"))))
+			{
+				
+			  DigitalPayment() ;	
+				
+			  DigitalAddress("International");
+			 
+			}
+			}
+			
+			
+			catch(Exception ex)
+			{
+			
+				System.out.println("Entering Catch");
+				 
+			if(data_obj.flag==false)
+			{
+				continue;
+			}
+						
+
+			data_obj.flag = shipping("International") ;
+			
+			if(data_obj.flag==false)
+			{
 				continue;
 			}
 
-			shipping("International") ;
-
-			payment();
+			payment() ;
+			
+			if(data_obj.flag==false)
+			{
+				continue;
+			}
+			
+			}
 		
 			data_obj.flag = placeOrder("International") ;
 			
-			orderConfirmation(filePath,fileName,sheetName);
+			if(data_obj.flag==false)
+			{
+				continue;
+			}
 
+			OrderConfirmationfinal();
 		}
 		
-		Logout();
+//		Logout();
+		
    }
 	
 
@@ -646,7 +761,7 @@ public void orderConfirmation() throws Exception {
 
 	data_obj.orderNumber = element_obj.orderNumber.getText().toString();
 
-	System.out.println(data_obj.orderNumber.substring(15));
+	System.out.println(data_obj.orderNumber);
 	
 	data_obj.subTotal = element_obj.Subtotal.getText().toString();
 
@@ -683,7 +798,7 @@ public void orderConfirmation() throws Exception {
 	//util.snapShots(data_obj.driver,"C:\\Users\\UNITS\\Documents\\Metallica_orders\\Order"+data_obj.orderCount+".png");
 }
 
-public void orderConfirmation(String filePath, String fileName, String sheetName) throws Exception {
+public void OrderConfirmationfinal() throws Exception {
 	
 //	util.Click(data_obj.driver.findElement(By.xpath("//a[@title='Order History']")));
 //	
@@ -742,7 +857,7 @@ public void orderConfirmation(String filePath, String fileName, String sheetName
 
 	System.out.println(data_obj.orderTotal);
 
-	writeOrderDetail(data_obj.orderCount, data_obj.orderNumber, data_obj.handling_cost, data_obj.salesTax, data_obj.orderTotal, data_obj.shippinging_cost,data_obj.subTotal,filePath,fileName,sheetName);
+	writeOrderDetail(data_obj.orderCount, data_obj.orderNumber, data_obj.handling_cost, data_obj.salesTax, data_obj.orderTotal, data_obj.shippinging_cost,data_obj.subTotal);
 
 //	util.snapShots(data_obj.driver,"C:\\Users\\UNITS\\Documents\\Metallica_orders\\Order"+data_obj.orderCount+".png");
 	
@@ -1111,6 +1226,122 @@ public void Logout() throws InterruptedException {
 		}
 		
 		}
+		
+
+		return true;	
+	}	
+	
+
+	public boolean Internationalshipping(String orderType) throws Exception
+		{
+			//no.click()
+		
+			try
+			{
+				
+				util.Isdisplayed(element_obj.driver.findElement(By.xpath("//div[@id='billing-address-header']")));
+				
+			     DigitalAddress("International");
+			     
+			     if(data_obj.preorder_flag > 1)
+					{
+						util.Click(element_obj.preorder_ack);
+					}
+			     
+			}		
+			catch(Exception ex)
+			{
+			util.Clear(element_obj.firstname);
+
+			util.Sendkeys(element_obj.firstname,data_obj.firstname);
+			
+			util.Clear(element_obj.lastname);
+
+			util.Sendkeys(element_obj.lastname,data_obj.lastname);
+
+			util.Clear(element_obj.address1);
+			
+			util.Sendkeys(element_obj.address1,element_obj.Address1);
+
+			util.Clear(element_obj.city);
+			
+			util.Sendkeys(element_obj.city,element_obj.City);
+
+			util.Clear(element_obj.zipcode);
+			
+			util.Sendkeys(element_obj.zipcode,element_obj.Zip_Code);
+			
+			Select countryUS = new Select(element_obj.countryField);
+			countryUS.selectByVisibleText("United States");
+		
+
+			if(orderType.equalsIgnoreCase("Domestic"))
+			{
+				Select state = new Select(element_obj.stateField);
+				state.selectByVisibleText(element_obj.State);
+				
+				util.Clear(element_obj.phone);
+				
+				util.Sendkeys(element_obj.phone,data_obj.Phone);
+			}
+					
+			if(orderType.equalsIgnoreCase("International"))
+			{
+				Select country = new Select(element_obj.countryField);
+				country.selectByVisibleText(element_obj.Country);
+				
+				
+				switch(element_obj.Country)
+				{
+				case "United Kingdom":
+					
+					util.Clear(element_obj.phone);
+					
+					util.Sendkeys(element_obj.phone,"9856475245255");
+					
+					break;
+					
+				case "France":
+					
+					util.Clear(element_obj.phone);
+					
+					util.Sendkeys(element_obj.phone,"06457894141");
+					
+					break;
+					
+				case "Canada":
+					
+					Thread.sleep(2000);
+					
+					Select state = new Select(element_obj.CAstateField);
+					state.selectByVisibleText(element_obj.State);
+					
+					break;
+					
+				default:
+					
+					util.Clear(element_obj.phone);
+					
+					util.Sendkeys(element_obj.phone,data_obj.Phone);
+					
+					break;
+				}		
+				
+			}
+			
+			if(data_obj.preorder_flag > 1)
+			{
+				util.Click(element_obj.preorder_ack);
+			}
+
+			util.WaitAndClick(element_obj.continuebill);
+			
+			if(util.Isdisplayed(element_obj.userAddress)) 
+			{
+				util.WaitAndClick(element_obj.userAddress);
+			}
+			}
+		
 
 //		util.Click(element_obj.useAsBillingAddress); //check-box to keep shipping address as billing address
 //
@@ -1211,6 +1442,123 @@ public void Logout() throws InterruptedException {
 
 	}
 
+	
+	public void DigitalPayment() throws Exception
+	
+	{
+		switch(element_obj.Payment_Method) 
+		{
+
+		case "Visa":
+			
+//			Select Visa = new Select(element_obj.cardlist);
+//			Visa.selectByVisibleText("(Visa) ************1881 - Expiration 01.2039");
+
+			
+			util.Sendkeys(element_obj.cardnumber, data_obj.Visa_number);
+			
+			Select card_month = new Select(element_obj.cardmonth);
+			
+			card_month.selectByValue(data_obj.Visa_month);
+			
+			Select card_year = new Select(element_obj.cardyear);
+			
+			card_year.selectByValue(data_obj.Visa_year);
+
+//			element_obj.cardyear.sendKeys(data_obj.Visa_year);
+
+			element_obj.cardcvn.sendKeys(data_obj.Visa_cvv);
+			
+			element_obj.cardname.sendKeys(data_obj.firstname);
+			
+//			if(element_obj.Error_message.isDisplayed())
+//			{
+//				System.out.println(element_obj.Error_message.toString());
+//				return false;
+//			}
+//			
+//			else if(element_obj.Error_span.isDisplayed())
+//			{
+//				System.out.println(element_obj.Error_span.toString());
+//				return false;
+//			}
+			
+			break;
+
+		case "Amex":
+
+						
+			element_obj.cardname.sendKeys(data_obj.firstname);
+			
+			element_obj.cardnumber.sendKeys(data_obj.Amex_number);
+
+			Select AmexCard_month = new Select(element_obj.cardmonth);
+			AmexCard_month.selectByValue(data_obj.Amex_month);
+
+			element_obj.cardyear.sendKeys(data_obj.Amex_year);
+			
+			element_obj.cardcvn.sendKeys(data_obj.Amex_cvv);
+
+//			if(element_obj.Error_message.isDisplayed())
+//			{
+//				System.out.println(element_obj.Error_message.toString());
+//				return false;
+//			}
+//			
+//			else if(element_obj.Error_span.isDisplayed())
+//			{
+//				System.out.println(element_obj.Error_span.toString());
+//				return false;
+//			}
+			
+			break;
+			
+		case "Discover":
+			
+			element_obj.cardname.sendKeys(data_obj.firstname);
+			
+			element_obj.cardnumber.sendKeys(data_obj.Dis_number);
+
+			Select Dis_month = new Select(element_obj.cardmonth);
+			Dis_month.selectByValue(data_obj.Dis_month);
+
+			element_obj.cardyear.sendKeys(data_obj.Dis_year);
+			
+			element_obj.cardcvn.sendKeys(data_obj.Dis_cvv);
+			
+			break;
+			
+		case "MasterCard":
+			
+			element_obj.cardname.sendKeys(data_obj.firstname);
+			
+			element_obj.cardnumber.sendKeys(data_obj.Mas_number);
+
+			Select Mas_month = new Select(element_obj.cardmonth);
+			Mas_month.selectByValue(data_obj.Mas_month);
+
+			element_obj.cardyear.sendKeys(data_obj.Mas_year);
+			
+			element_obj.cardcvn.sendKeys(data_obj.Mas_cvv);
+			
+			break;
+
+		case "Paypal":
+
+			paypal();
+
+			break;
+
+		default:
+
+			System.out.println("Give a Valid Payment Method");
+			break;
+		}
+	}
+	
+	
+	
+	
 	public void payment() throws Exception
 	{
 		switch(element_obj.Payment_Method) 
@@ -1280,7 +1628,7 @@ public void Logout() throws InterruptedException {
 			
 			break;
 			
-		case "Dis":
+		case "Discover":
 			
 			element_obj.cardname.sendKeys(data_obj.firstname);
 			
@@ -1295,7 +1643,7 @@ public void Logout() throws InterruptedException {
 			
 			break;
 			
-		case "Mas":
+		case "MasterCard":
 			
 			element_obj.cardname.sendKeys(data_obj.firstname);
 			
@@ -1656,7 +2004,7 @@ public void Logout() throws InterruptedException {
 		
 		orderNumber_cell.setCellType(orderNumber_cell.CELL_TYPE_STRING);
 
-		orderNumber_cell.setCellValue(orderNumber.substring(14));
+		orderNumber_cell.setCellValue(orderNumber);
 	    
 	    Cell shippingCost_cell = row.createCell(11);
 		
@@ -1682,7 +2030,7 @@ public void Logout() throws InterruptedException {
 
 	    orderTotal_cell.setCellValue(orderTotal);
 	    
-	    Cell subtotal_cell = row.createCell(17);
+	    Cell subtotal_cell = row.createCell(15);
 		
 	    subtotal_cell.setCellType(subtotal_cell.CELL_TYPE_STRING);
 
@@ -2764,13 +3112,13 @@ public void Amplience(boolean result,int number) throws IOException
 				SiteData.FailedContestLists = SiteData.FailedPastTourDateLists.substring(0,SiteData.FailedPastTourDateLists.length() -1);
 				
 				result_cell.setCellValue(" Failed PastTour Lists: "+SiteData.FailedPastTourDateLists);
-		}
+		    }
 		
 		
 	}
 			
 	}
-	
+		
 	Cell result_cell = row.createCell(4);
 	
 	result_cell.setCellType(result_cell.CELL_TYPE_STRING);
@@ -2785,6 +3133,7 @@ public void Amplience(boolean result,int number) throws IOException
 		    
 	outputstream.close();
 }
+
 
 
 public void AlgoliaSongs(boolean result,int number) throws IOException

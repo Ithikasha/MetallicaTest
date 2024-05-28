@@ -35,7 +35,7 @@ public class Data_Regression {
 	
 	public String Input_sheetName = "input";
 			
-	public String URL =  " https://www.metallica.com/"; // https://www.metallica.com/ , https://ithikasha@unitedtechno.com:Ithi@sfcc07feb@staging.rockdevelop.com/ , https://ithikasha@unitedtechno.com:Ithi@sfcc07feb@development.rockdevelop.com/
+	public String URL =  "https://www.metallica.com/"; // https://www.metallica.com/ , https://ithikasha@unitedtechno.com:Ithi@sfcc07feb@staging.rockdevelop.com/ , https://ithikasha@unitedtechno.com:Ithi@sfcc07feb@development.rockdevelop.com/
 	
 	public String AlgoliaURL = "https://www.metallica.com/search/?q=Robert&csort=otn&viewAllContent=true";
 	

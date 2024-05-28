@@ -947,7 +947,7 @@ public class Shippingpage {
 		}
 		else
 		{
-			System.out.println("\t\t\t"+"Vinyl club Ship bucket validation Successful");
+			System.out.println("\t\t\t"+"Vinyl club Ship bucket validation UnSuccessful");
 			func.write_Regressiontest(false, 39);
 		}
 		

@@ -52,7 +52,7 @@ public class Placeorder_page {
 		
 		for(int i = 1; i <= data_regression.itemlist.length; i++)
 		{
-			data_regression.POP_prdName.add(i-1, element_obj.driver.findElement(By.xpath("(//div[@class='name']//child::a)["+i+"]")).getText());
+			data_regression.POP_prdName.add(i-1, element_obj.driver.findElement(By.xpath("(//div[@class='name product-link']//child::a)["+i+"]")).getText());
 			
 			data_regression.POP_price.add(i-1, element_obj.driver.findElement(By.xpath("(//td[@class='item-total'])[\"+i+\"]")).getAttribute("innerText").strip());
 			
@@ -365,10 +365,15 @@ public class Placeorder_page {
 		}
 		
 		if(data_regression.URL == data_obj.Prod_url)
-		{
+		{	
+						
 			return false;
 		}
 		
+		
+		
+		System.out.println("Else");
+			
 		System.out.println("\tSmoke Testing: Place Order validation");
 		
 		System.out.println("\t\tTestcase - 48");
@@ -395,4 +400,5 @@ public class Placeorder_page {
 		return true;
 	}
 
+	
 }

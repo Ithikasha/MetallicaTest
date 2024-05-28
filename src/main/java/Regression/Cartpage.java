@@ -108,7 +108,7 @@ public class Cartpage {
 		
 		for(int i = 1; i <= data_regression.itemlist.length; i++)
 		{
-			data_regression.CP_prdName.add(i-1, element_obj.driver.findElement(By.xpath("(//div[@class='name']//child::a)["+i+"]")).getText());
+			data_regression.CP_prdName.add(i-1, element_obj.driver.findElement(By.xpath("(//div[@class='name product-link']//child::a)["+i+"]")).getText());
 			
 			data_regression.CP_price.add(i-1, element_obj.driver.findElement(By.xpath("(//div[@class='item-total item-info-col']//child::span)["+i+"]")).getText());
 			
@@ -177,7 +177,7 @@ public class Cartpage {
 		
 		for(int c = 1; c <= data_regression.itemlist.length; c++)
 		{			
-			if(data_obj.driver.findElement(By.xpath("(//div[@class='name']//child::a)["+c+"]")).getText().contains("Digital Download"))
+			if(data_obj.driver.findElement(By.xpath("(//div[@class='name product-link']//child::a)["+c+"]")).getText().contains("Digital Download"))
 			{
 				System.out.println("\t\t\t"+"Digital Product quantity should not be more than 1 - Successful");
 			}

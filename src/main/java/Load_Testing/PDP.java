@@ -220,7 +220,7 @@ public class PDP {
 		
 		util.Click(element_obj.SearchBar);
 		
-		util.Sendkeys(element_obj.srchIP,"LIVE METALLICA: PARIS, FRANCE - MAY 17 2023 (2CD)");
+		util.Sendkeys(element_obj.srchIP,"LIVE METALLICA MUNICH GERMANY - MAY 26 2024 (2CD)");
 		
 //		LIVE METALLICA: GLOBAL CITIZEN FESTIVAL IN NEW YORK NY - SEPTEMBER 24 2022 (CD)
 
