@@ -1007,7 +1007,22 @@ public void Hostek() throws Exception
 	
 	System.out.println(ContestLists);
 	
+	
 	int fail = 0;
+	
+	if(util.Isdisplayed(element_obj.ContestPageError)) {
+		
+		System.out.println("Error Occurs");
+		
+		System.out.println("\t\t\t"+"Contest Lists validation Unsuccessful");
+		
+		func.Hostek(false, 16);
+		
+	}
+	
+	
+	else {	
+	
 		
 	for(int i=1; i<=ContestLists; i++)
 		
@@ -1080,6 +1095,7 @@ public void Hostek() throws Exception
 		func.Hostek(true, 16);
 		
 	
+	}
 	}
 	
 }

@@ -115,7 +115,7 @@ public class SiteMonitoring {
 		
 //		GiftCertificate_Validation();
 		
-		MiniCartOverlay();  
+//		MiniCartOverlay();  
 		
 		ServiceCloud();  
 		
@@ -166,7 +166,7 @@ public class SiteMonitoring {
 	
 	{
 			
-		functions.Add_product("KHPOUIJAT-S");
+		functions.Add_product("KHPOUIJAT-M");
 		
 		util.Click(elements.checkout);
 		
@@ -282,7 +282,7 @@ public class SiteMonitoring {
 	public static void Avalara() throws Exception
 	{
 		
-	 	functions.Add_product("KHPOUIJAT-S");
+	 	functions.Add_product("KHPOUIJAT-M");
 		
 //		System.out.println("\tAvalara_TaxableDomestic Testing");
 		
@@ -567,7 +567,7 @@ public class SiteMonitoring {
 		
 		System.out.println("\tUPS Testing");
 		
-		functions.Add_product("KHPOUIJAT-S");
+		functions.Add_product("KHPOUIJAT-M");
 		
 		util.Click(elements.checkout);
 
