@@ -438,7 +438,7 @@ public class Functions {
 			login();
 		}
  
-		for (data_obj.orderCount = 7; data_obj.orderCount < totalOrders; data_obj.orderCount++) 
+		for (data_obj.orderCount = 11; data_obj.orderCount < totalOrders; data_obj.orderCount++) 
 		{
 
 			data_obj.flag = true;
@@ -661,7 +661,7 @@ public class Functions {
 			login();
 		}
 
-		for (data_obj.orderCount = 1; data_obj.orderCount < totalOrders; data_obj.orderCount++) {
+		for (data_obj.orderCount = 3; data_obj.orderCount < totalOrders; data_obj.orderCount++) {
 
 			Row row = sheet.getRow(data_obj.orderCount);
 

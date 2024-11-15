@@ -115,7 +115,7 @@ public class SiteMonitoring {
 		
 //		GiftCertificate_Validation();
 		
-//		MiniCartOverlay();  
+		MiniCartOverlay();  
 		
 		ServiceCloud();  
 		
@@ -166,7 +166,7 @@ public class SiteMonitoring {
 	
 	{
 			
-		functions.Add_product("KHPOUIJAT-M");
+		functions.Add_product("RTLT10722-M");
 		
 		util.Click(elements.checkout);
 		
@@ -195,23 +195,18 @@ public class SiteMonitoring {
 			System.out.println("\t\t\t"+"ShipperHQ_Instock validation unsuccessful");
 			
 			SiteData.result = false;
-			
+			                                  
 			functions.write_SiteMonitoring(SiteData.result, 1);
 			
 //			Email = Email.concat("Shipper HQ_Instock failed");
 			
 //			data.email(Email);
-		}
-		
-		
-		
-		
-		
+		}	
 	}
 	
 	public static void ShipperHQ_Preorder() throws Exception  
 	{
-		functions.Add_Preorder("LIVE METALLICA MUNICH GERMANY - MAY 26 2024 (2CD)");
+		functions.Add_Preorder("Live Metallica: Helping Hands Benefit Concert in Los Angeles, CA - December 13, 2024 (2CD)");
 		
 		util.Click(elements.checkout);
 		
@@ -282,7 +277,7 @@ public class SiteMonitoring {
 	public static void Avalara() throws Exception
 	{
 		
-	 	functions.Add_product("KHPOUIJAT-M");
+	 	functions.Add_product("RTLT10722-M");
 		
 //		System.out.println("\tAvalara_TaxableDomestic Testing");
 		
@@ -502,7 +497,7 @@ public class SiteMonitoring {
 		
 		util.Clear(elements.address1);
 		
-		util.Sendkeys(elements.address1,"1200 Av De Germain-Des-Prés");
+		util.Sendkeys(elements.address1,"1200 Av De Germain-Des-Pr s");
 
 		util.Clear(elements.city);
 		
@@ -567,7 +562,7 @@ public class SiteMonitoring {
 		
 		System.out.println("\tUPS Testing");
 		
-		functions.Add_product("KHPOUIJAT-M");
+		functions.Add_product("RTLT10722-M");
 		
 		util.Click(elements.checkout);
 
@@ -600,6 +595,8 @@ public class SiteMonitoring {
 		{
 			util.WaitAndClick(elements.userAddress);
 			
+			Thread.sleep(5000);	
+			
 			util.WaitAndClick(elements.SP_BackToCart);
 			
 		   // System.out.println("True");
@@ -627,6 +624,8 @@ public class SiteMonitoring {
 	{
 	
 	System.out.println("\tLoqate Testing");	
+	
+	//functions.Add_product("KHPOUIJAT-M");
 		
 	util.Click(elements.checkout);
 	
@@ -822,6 +821,8 @@ public class SiteMonitoring {
 //		
 //		util.Click(elements.DigitalDownload);
 		
+		util.Click(elements.login);
+		
 		functions.GuestOrderCheck("01106708","94070-5800", "ithikasha@unitedtechno.com" );
 		
 		util.Click(elements.DigitalDownload);
@@ -834,7 +835,7 @@ public class SiteMonitoring {
 		
 		Thread.sleep(10000);
 		
-		File f = new File("C:\\Users\\UTIS LAPTOP 38\\Downloads\\I-DISAPPEAR_mp3.zip"); 
+		File f = new File("C:\\Users\\91956\\Downloads\\I-DISAPPEAR_mp3.zip"); 
 		
 //		System.out.println(f.exists());
 			
