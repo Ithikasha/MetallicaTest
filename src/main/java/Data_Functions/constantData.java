@@ -1,6 +1,6 @@
 package Data_Functions;
 
-//import java.text.DateFormat;
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -31,9 +31,11 @@ public class constantData {
 	
 	public String Prod_url = "https://www.metallica.com/";
 	
-	public String DEV_url = "https://ithikasha@unitedtechno.com:Ithi@sfccnov2024@development.rockdevelop.com/";
+	public String DEV_url = "https://ithikasha@unitedtechno.com:Ithi@sfcc07nov@development.rockdevelop.com/";
 	
 	public String Cloudinary_Url ="https://metallica-res.cloudinary.com/image/upload/w_371,h_241,f_auto,q_auto:best,c_fill,dpr_2.0,e_sharpen:60,g_auto:subject/v1653964160/Photos/Live%20Photos/2022-05may29_Boston-Massachusetts/2022-05may29_Boston-Massachusetts_Jeff-Yeager_001.jpg";
+	
+	public String AlgoliaURL = "https://www.metallica.com/search/?q=Robert&csort=otn&viewAllContent=true";
 	
 	public String Knightlab_Url="https://www.metallica.com/band-timeline.html";
 	
@@ -45,19 +47,17 @@ public class constantData {
 	
 	public String DevTomsUrl = "https://sbxmetclub.tejassoftware.com/toms";
 	
-	public String AlgoliaUrl ="https://www.metallica.com/search/?q=Robert&csort=otn&viewAllContent=true";
-	
-	public String ProdTomsusername = "ithikasha@unitedtechno.com"; 
+	public String ProdTomsusername = "ithikasha@unitedtechno.com";
 	
 	public String ProdTomspassword = "Ithi@toms09nov";
 	
-	public String DevTomspassword ="Ithikash@toms07jan";
+	public String DevTomspassword ="Ithikash@toms07oct";
 	
-	public String STG_url = "https://ithikasha@unitedtechno.com:Ithi@sfccnov2024@staging.rockdevelop.com/";
+	public String STG_url = "https://ithikasha@unitedtechno.com:Ithi@sfccmay2025@staging.rockdevelop.com/";
 	
 	public String DEV03_url = "https://dev03-na01-metallica.demandware.net/s/Metallica/home/";
 	
-	public String filePath = "Excelsheets";
+	public String filePath = "C:\\Users\\admin\\eclipse-workspace\\Metallica\\Excelsheets";
 	
 	public String username = "ithikasha@unitedtechno.com"; //ithikasha@unitedtechno.com , qatest0975@gmail.com
 	
@@ -107,13 +107,13 @@ public class constantData {
 	
 	public static String ReturnOrderNumber = "01256523";
 	
-	public String Visa_number = "4012888888881881";
+	public String Visa_number ="4111111111111111";
 	
 	public String Visa_date = "08";
 	
 	public String Visa_month = "12";
 	
-	public String Visa_year = "2027";
+	public String Visa_year = "2030";
 	
 	public String Visa_cvv = "737";
 	
@@ -123,7 +123,7 @@ public class constantData {
 	
 	public String Amex_month = "12";
 	
-	public String Amex_year = "2024";
+	public String Amex_year = "2030";
 	
 	public String Amex_cvv = "7373";
 	
@@ -133,7 +133,7 @@ public class constantData {
 	
 	public String Dis_month = "12";
 	
-	public String Dis_year = "2025";
+	public String Dis_year = "2030";
 	
 	public String Dis_cvv = "123";
 	
@@ -143,7 +143,7 @@ public class constantData {
 	
 	public String Mas_month = "10";
 	
-	public String Mas_year = "2026";
+	public String Mas_year = "2030";
 	
 	public String Mas_cvv = "123";
 	
@@ -171,29 +171,29 @@ public class constantData {
 
 	public boolean flag;
 	
-//	@FindBy(xpath="//button[@class='secondary-button small-link']") //(//div[@class='nav-wrapper']//button)[3]
-//	public WebElement STG_advanced;
-//	
-//	@FindBy(xpath="//a[@id='proceed-link']")
-//	public WebElement STG_proceed;
+	@FindBy(xpath="//button[@class='secondary-button small-link']") //(//div[@class='nav-wrapper']//button)[3]
+	public WebElement STG_advanced;
+	
+	@FindBy(xpath="//a[@id='proceed-link']")
+	public WebElement STG_proceed;
 
 	public String subTotal;
 	
 	public int preorder_flag = 0;
 	
-//	public constantData()
-//	{
-//		DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy ");
-//		 
-//		Date date = new Date();
-//		
-//		
-//		
-////		System.out.println(dateFormat.format(date));
-//		 
-//		CurrentDate= dateFormat.format(date);
-//		
-//	}
+	public constantData()
+	{
+		DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy ");
+		 
+		Date date = new Date();
+		
+		
+		
+//		System.out.println(dateFormat.format(date));
+		 
+		CurrentDate= dateFormat.format(date);
+		
+	}
 
 }
 

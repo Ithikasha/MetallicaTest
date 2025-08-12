@@ -430,6 +430,8 @@ public class Functions {
 		FileInputStream istream = new FileInputStream(file);
 
 		Workbook book = fileSetup(istream,data_obj.fileName);
+		
+//		System.out.println(book = fileSetup(istream,data_obj.fileName));
 
 		Sheet sheet = book.getSheet(sheetName);
 
@@ -438,7 +440,7 @@ public class Functions {
 			login();
 		}
  
-		for (data_obj.orderCount = 11; data_obj.orderCount < totalOrders; data_obj.orderCount++) 
+		for (data_obj.orderCount = 15; data_obj.orderCount < totalOrders; data_obj.orderCount++) 
 		{
 
 			data_obj.flag = true;
@@ -661,7 +663,7 @@ public class Functions {
 			login();
 		}
 
-		for (data_obj.orderCount = 3; data_obj.orderCount < totalOrders; data_obj.orderCount++) {
+		for (data_obj.orderCount = 1; data_obj.orderCount < totalOrders; data_obj.orderCount++) {
 
 			Row row = sheet.getRow(data_obj.orderCount);
 

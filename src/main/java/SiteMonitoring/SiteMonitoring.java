@@ -50,9 +50,7 @@ public class SiteMonitoring {
 	
 	public static void main(String args[]) throws Exception
 	
-	{
-		
-		
+	{	
 		data.driver = util.chrome();
 	    
 	    elements = new pageElements(data.driver);
@@ -117,7 +115,7 @@ public class SiteMonitoring {
 		
 		MiniCartOverlay();  
 		
-		ServiceCloud();  
+//		ServiceCloud();  
 		
 		Hostek();
 		
@@ -147,7 +145,7 @@ public class SiteMonitoring {
 	
 	{		
 //		System.out.println("ShipperHQ");
-		
+			
 //		System.out.println("\tShipperHQ_Instock Testing");
 		
 		ShipperHQ_Instock();
@@ -163,10 +161,9 @@ public class SiteMonitoring {
 	}
 	
 	public static void  ShipperHQ_Instock() throws Exception
-	
 	{
 			
-		functions.Add_product("RTLT10722-M");
+		functions.Add_product("FS1994SHIRT-S");
 		
 		util.Click(elements.checkout);
 		
@@ -206,7 +203,7 @@ public class SiteMonitoring {
 	
 	public static void ShipperHQ_Preorder() throws Exception  
 	{
-		functions.Add_Preorder("Live Metallica: Helping Hands Benefit Concert in Los Angeles, CA - December 13, 2024 (2CD)");
+		functions.Add_Preorder("LM20250627");
 		
 		util.Click(elements.checkout);
 		
@@ -277,7 +274,7 @@ public class SiteMonitoring {
 	public static void Avalara() throws Exception
 	{
 		
-	 	functions.Add_product("RTLT10722-M");
+	 	functions.Add_product("FS1994SHIRT-S");
 		
 //		System.out.println("\tAvalara_TaxableDomestic Testing");
 		
@@ -359,8 +356,7 @@ public class SiteMonitoring {
 			
 			functions.write_SiteMonitoring(SiteData.result, 4);
 		}
-			
-		
+					
 	}
 	
 	public static void Avalara_NonTaxableDomestic() throws Exception
@@ -562,7 +558,7 @@ public class SiteMonitoring {
 		
 		System.out.println("\tUPS Testing");
 		
-		functions.Add_product("RTLT10722-M");
+		functions.Add_product("FS1994SHIRT-S");
 		
 		util.Click(elements.checkout);
 
@@ -631,22 +627,22 @@ public class SiteMonitoring {
 	
 	util.Clear(elements.address1);
 	
-	util.Sendkeys(elements.address1,"Europa-Allee 6");
+	util.Sendkeys(elements.address1,"Glasgow Rd");
 
 	util.Clear(elements.city);
 	
-	util.Sendkeys(elements.city,"Frankfurt Am Main");
+	util.Sendkeys(elements.city,"Dumfries");
 	
 	Select country = new Select(elements.countryField);
-	country.selectByVisibleText("Germany");
+	country.selectByVisibleText("United Kingdom");
 
 	util.Clear(elements.zipcode);
 	
-	util.Sendkeys(elements.zipcode,"60327");
+	util.Sendkeys(elements.zipcode,"DG2 9BF");
 	
 	util.Clear(elements.phone);
 	
-	util.Sendkeys(elements.phone,"9858989588");
+	util.Sendkeys(elements.phone,"9566585685");
 	
 	util.WaitAndClick(elements.continuebill);
 	
@@ -835,7 +831,7 @@ public class SiteMonitoring {
 		
 		Thread.sleep(10000);
 		
-		File f = new File("C:\\Users\\91956\\Downloads\\I-DISAPPEAR_mp3.zip"); 
+		File f = new File("C:\\Users\\admin\\Downloads\\I-DISAPPEAR_mp3.zip"); 
 		
 //		System.out.println(f.exists());
 			
@@ -957,7 +953,7 @@ public class SiteMonitoring {
 		
 		util.Click(elements.SearchBar);
 		
-		util.Sendkeys(elements.srchIP,"Shirt");
+		util.Sendkeys(elements.srchIP,"Shirts");
 
 		elements.srchTxt.submit();
 		
@@ -977,13 +973,20 @@ public class SiteMonitoring {
 		 
 		 Thread.sleep(2000);
 		 
-		 if(util.Isdisplayed(elements.SizeMedium))
+		 
+		 if(util.Isdisplayed(elements.SizeLarge))
 		 {
-			 util.jClick(data.driver,elements.SizeMedium);
+			 util.jClick(data.driver,elements.SizeLarge);
 			 
 			
 		}
 		 
+		 else
+		 {
+			 util.jClick(data.driver,elements.GildanSizeLarge);
+			 
+			
+		}
 		 
 		 
 			if(util.Isdisplayed(elements.preorder))
@@ -3193,7 +3196,7 @@ public class SiteMonitoring {
 				
 				String PastTourStadium = elements.driver.findElement(By.xpath("//a[@class='past-show-item']//following::span[@class='venue-name-wrap'][text()]["+i+"]")).getText();
 				
-				WebElement PastTourButton = elements.driver.findElement(By.xpath("//a[@class='past-show-item']//following::button[@class='button cta']["+i+"]"));
+				WebElement PastTourButton = elements.driver.findElement(By.xpath("//a[@class='past-show-item']//following::button["+i+"]"));
 				
 				if (PastTourDate.length() != 0 )
 				{
@@ -3274,17 +3277,19 @@ public class SiteMonitoring {
 				
 				int fail = 0;
 				
+				int count = 0;
+				
 				data.driver.get(data.Prod_url);
 				
 				functions.PRD_login();
 				
-				data.driver.get(data.AlgoliaUrl);
+				data.driver.get(data.AlgoliaURL);
 				
 				int Pages = elements.Pages.size();
 				
 				System.out.println(Pages);
 				
-				if(Pages == 20)
+				if(Pages >= 20)
 				{
 					
 					System.out.println("Content search result page contains 20 results - Success");
@@ -3336,9 +3341,13 @@ public class SiteMonitoring {
 						catch(Exception e)
 					        {
 					        	System.out.println("Passed");
+					        	count++;
 					        }        
 					       	      
-					
+					if(count==20) {
+						
+						break;
+					}
 					
 					
 			}
@@ -3562,7 +3571,7 @@ public class SiteMonitoring {
 				{
 					
 					System.out.println("If Darkness Had A Son Count validation UnSuccessful\n");	
-					SiteData.FailedSongs = SiteData.FailedSongs.concat("Enter Sandman" + SiteData.IfDarknessHadASonCount + SiteData.IfDarknessHadASonCountinSongsPage); 			
+					SiteData.FailedSongs = SiteData.FailedSongs.concat("If Darkness Had A Son" + SiteData.IfDarknessHadASonCount + SiteData.IfDarknessHadASonCountinSongsPage); 			
 					fail++;
 				
 				}

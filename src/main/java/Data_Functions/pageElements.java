@@ -484,7 +484,7 @@ public class pageElements {
 	@FindBy(xpath="//dd[@class='order-value order-total-value js-estimatedTotalUpdated']") 
 	public WebElement BP_total;
 	
-	@FindBy(xpath="//dd[@class='order-sales-tax-value js-taxUpdated']") 
+	@FindBy(xpath="//div[@class='order-sales-tax-value js-taxUpdated']") 
 	public WebElement BP_tax;
 	
 	@FindBy(xpath="//img[@class='paypal-logo']") 
@@ -564,10 +564,10 @@ public class pageElements {
 	@FindBy(xpath="//div[@class='order-confirmation-details col']//h1[@class='order-history-h1 account-primary-heading']//span")
 	public WebElement orderNumber;
 	
-	@FindBy(xpath="//div[@class='order-confirmation-details col']//dd[@class='order-subtotal-value js-miniCartSubtotals']")
+	@FindBy(xpath="//div[@class='order-confirmation-details col']//div[@class='order-subtotal-value js-miniCartSubtotals']")
 	public WebElement Subtotal;
 	
-	@FindBy(xpath="//div[@class='order-confirmation-details col']//dd[@class='order-shipping-value js-shippingUpdated']")
+	@FindBy(xpath="//div[@class='order-confirmation-details col']//div[@class='order-shipping-value js-shippingUpdated']")
 	public WebElement Shipping_cost;
 	
 	@FindBy(xpath="(//tr[@class='order-shipping  first ']//following::td)[2]")
@@ -576,13 +576,13 @@ public class pageElements {
 	@FindBy(xpath="(//tr[@class='order-shipping  last']//following::td)[2]")
 	public WebElement Shipping_cost2;
 	
-	@FindBy(xpath="(//dd[@class='order-handling-value'])[2]")
+	@FindBy(xpath="(//div[@class='order-handling-value'])[2]")
 	public WebElement Handling_cost; 
 	
-	@FindBy(xpath="//div[@class='order-confirmation-details col']//dd[@class='order-sales-tax-value js-taxUpdated']") 
+	@FindBy(xpath="//div[@class='order-confirmation-details col']//div[@class='order-sales-tax-value js-taxUpdated']") 
 	public WebElement salesTax; 
 	
-	@FindBy(xpath="//div[@class='order-confirmation-details col']//dd[@class='order-value order-total-value js-estimatedTotalUpdated']")
+	@FindBy(xpath="//div[@class='order-confirmation-details col']//div[@class='order-value order-total-value js-estimatedTotalUpdated']")
 	public WebElement orderTotal; 
 	
 	@FindBy(xpath="//a[@class='continue button']")
@@ -681,7 +681,7 @@ public class pageElements {
 	
 	// Cloudinary
 	
-	@FindBy(xpath="//title[text()='2022-05may29_Boston-Massachusetts_Jeff-Yeager_001.jpg (742×482)']")
+	@FindBy(xpath="//title[text()='2022-05may29_Boston-Massachusetts_Jeff-Yeager_001.jpg (742Ã—482)']")
 	public WebElement CloudinaryImg;
 	
 	//DigitalOcean
@@ -1007,6 +1007,12 @@ public class pageElements {
 	@FindBy(xpath="(//a[contains(@title,'Select Size: Medium')])")
 	public WebElement SizeMedium;
 	
+	@FindBy(xpath="(//a[contains(@title,'Select Size: Large')])")
+	public WebElement SizeLarge;
+	
+	@FindBy(xpath="(//a[contains(@title,'Select Size: Gildan Large')])")
+	public WebElement GildanSizeLarge;
+	
 	//span[@title='Mon, Jul 11, 2022, 3:04 PM']
 
 	
@@ -1111,7 +1117,7 @@ public class pageElements {
 	@FindBy(xpath="(//div[@class='c-song-detail__info__content']//div[@class='c-song-detail__info__value'])[1]")
 	public WebElement CountInSongsDetailPage;
 	
-	@FindBy(xpath="//a[@class='h2' and contains(text(),'Ain’t My Bitch')]")
+	@FindBy(xpath="//a[@class='h2' and contains(text(),'Ainâ€™t My Bitch')]")
 	public WebElement AintMyBitchName;
 	
 	@FindBy(xpath="//li[@class='js-song song-aint-my-bitch']//span[@class='grid-view-data-link']")

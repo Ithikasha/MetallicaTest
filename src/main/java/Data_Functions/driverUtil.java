@@ -117,7 +117,7 @@ public class driverUtil {
 	public WebDriver chrome()
 	{
 //		System.setProperty("webdriver.chrome.driver","C:\\Users\\UNITS\\Documents\\BitBucket\\chromedriver_win32\\chromedriver.exe");
-		System.setProperty("webdriver.chrome.driver","D:\\ChromeDrivers\\chromedriver11082024\\chromedriver-win32\\chromedriver.exe");
+		System.setProperty("webdriver.chrome.driver","C:\\Users\\admin\\Downloads\\chromedriver-win32 (2)\\chromedriver-win32\\chromedriver.exe");
 //		System.setProperty("webdriver.chrome.driver","C:\\METALLICA\\chromedriver\\chromedriver.exe");
 		
 //		System.setProperty("webdriver.chrome.driver","Chromedriver\\chromedriver.exe");
