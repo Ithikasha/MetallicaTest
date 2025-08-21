@@ -24,4 +24,4 @@ jobs:
       - name: Run SiteMonitoring.java
         run: |
           mvn compile
-          java -cp target/classes com.yourpackage.SiteMonitoring
+          java -cp target/classes com.SiteMonitoring.SiteMonitoring
