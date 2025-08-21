@@ -22,4 +22,4 @@ jobs:
         run: mvn -B package --file pom.xml
 
       - name: Run SiteMonitoring.java
-        run: mvn exec:java -Dexec.mainClass="com.Sitemonitoring.SiteMonitoring.java"
+        run: mvn exec:java -Dexec.mainClass="com.Sitemonitoring.SiteMonitoring"
