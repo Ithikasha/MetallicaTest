@@ -22,6 +22,7 @@ jobs:
         run: mvn -B package --file pom.xml
 
       - name: Run SiteMonitoring.java
+        if: always()
         run: |
           mvn compile
           java -cp target/classes com.SiteMonitoring.SiteMonitoring
